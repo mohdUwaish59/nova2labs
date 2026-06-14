@@ -31,7 +31,6 @@ export function Header() {
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
         <Link to="/" className="group flex items-center gap-2">
-          {/* Inline SVG so dark: CSS class works properly */}
           <svg
             viewBox="0 0 452 140"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,14 +61,9 @@ export function Header() {
               <path d="M431,67 C431,54 410,53 408,68 C406,80 431,80 429,95 C427,110 406,110 404,98" />
               <path d="M18,110 L26,110" />
             </g>
-            {/* "2" — original cyan, always */}
             <path d="M227,60 C227,42 258,40 259,61 C260,76 242,87 230,99 L226,110 L263,110" stroke="#15C0E0" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-            {/* dot — original cyan, always */}
             <circle cx="14" cy="110" r="6.5" fill="#15C0E0" />
           </svg>
-          <span className="font-display text-base font-semibold tracking-tight">
-            
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
