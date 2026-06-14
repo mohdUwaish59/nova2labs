@@ -1,0 +1,11 @@
+{
+  "buildCommand": "NITRO_PRESET=vercel npm run build",
+  "outputDirectory": ".output/public",
+  "framework": null,
+  "installCommand": "npm install",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
