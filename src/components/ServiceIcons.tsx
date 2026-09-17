@@ -396,18 +396,34 @@ export function ServiceIcon({
   style?: CSSProperties;
   eager?: boolean;
 }) {
+  // Each icon ships a light-mode sibling: softer cast shadow, faint halo and
+  // edges that still read against white. Only the active theme's file is shown.
+  const shared = {
+    width: size,
+    height: size,
+    alt: "",
+    draggable: false,
+    loading: eager ? ("eager" as const) : ("lazy" as const),
+    decoding: "async" as const,
+    style: { width: size, height: size, ...style },
+  };
+
   return (
-    <img
-      src={`/icons/services/${slug}.svg`}
-      width={size}
-      height={size}
-      alt=""
+    <span
+      className={`relative inline-flex shrink-0 ${className}`}
+      style={{ width: size, height: size }}
       aria-hidden
-      draggable={false}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      className={`block shrink-0 select-none object-contain ${className}`}
-      style={{ width: size, height: size, ...style }}
-    />
+    >
+      <img
+        {...shared}
+        src={`/icons/services/${slug}-light.svg`}
+        className="block select-none object-contain dark:hidden"
+      />
+      <img
+        {...shared}
+        src={`/icons/services/${slug}.svg`}
+        className="hidden select-none object-contain dark:block"
+      />
+    </span>
   );
 }

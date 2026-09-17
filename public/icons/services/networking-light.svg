@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+<defs>
+<linearGradient id="nw-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ce4f5"></stop><stop offset="1" stop-color="#22d3ee"></stop></linearGradient>
+<linearGradient id="nw-face" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee"></stop><stop offset="1" stop-color="#0b6f85"></stop></linearGradient>
+<linearGradient id="nw-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b6f85"></stop><stop offset="1" stop-color="#0d6277"></stop></linearGradient>
+<linearGradient id="nw-vio" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4b5fd"></stop><stop offset="1" stop-color="#8b5cf6"></stop></linearGradient>
+<radialGradient id="nw-glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#0891b2" stop-opacity="0.18"></stop><stop offset="0.6" stop-color="#22d3ee" stop-opacity="0.08"></stop><stop offset="1" stop-color="#22d3ee" stop-opacity="0"></stop></radialGradient>
+</defs>
+<circle cx="128" cy="128" r="118" fill="url(#nw-glow)"></circle>
+<g transform="translate(128,128) scale(0.78) translate(-128.0,-128.0)">
+<g transform="translate(15.00,9.00)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(14.00,8.40)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(13.00,7.80)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(12.00,7.20)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(11.00,6.60)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(10.00,6.00)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(9.00,5.40)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(8.00,4.80)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(7.00,4.20)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(6.00,3.60)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(5.00,3.00)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(4.00,2.40)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(3.00,1.80)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(2.00,1.20)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><g transform="translate(1.00,0.60)"><circle cx="118" cy="130" r="84" fill="#d7ecf5"></circle></g><circle cx="118" cy="130" r="84" fill="url(#nw-face)"></circle>
+<g stroke="#a5f3fc" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9">
+<path d="M34 130h168"></path><ellipse cx="118" cy="130" rx="38" ry="84"></ellipse>
+<path d="M48 82c20 11 44 17 70 17s50-6 70-17"></path><path d="M48 178c20-11 44-17 70-17s50 6 70 17"></path></g>
+<circle cx="118" cy="46" r="16" fill="#a5f3fc"></circle><circle cx="38" cy="182" r="13" fill="url(#nw-vio)"></circle>
+<circle cx="200" cy="80" r="13" fill="#67e8f9"></circle><circle cx="208" cy="198" r="18" fill="url(#nw-vio)"></circle>
+</g>
+</svg>
