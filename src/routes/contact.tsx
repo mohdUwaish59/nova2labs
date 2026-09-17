@@ -12,9 +12,11 @@ import {
   Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { SERVICES } from "@/lib/services-data";
 import { buildMailto, submitLead } from "@/lib/lead";
 import { CONTACT_EMAIL, LOCATION, seo } from "@/lib/site";
+import { PAGE_PHOTOS } from "@/lib/images";
 import type { ServiceSlug } from "@/components/ServiceIcons";
 
 export const Route = createFileRoute("/contact")({
@@ -187,6 +189,13 @@ function Contact() {
                   </div>
                 </div>
               </div>
+
+              <Photo
+                photo={PAGE_PHOTOS.contact}
+                ratio="16/9"
+                sizes="(min-width: 1024px) 380px, 100vw"
+                className="rounded-2xl border border-border"
+              />
 
               <div className="rounded-2xl border border-border bg-surface p-6">
                 <p className="mb-4 font-mono text-[11px] uppercase tracking-widest text-primary">

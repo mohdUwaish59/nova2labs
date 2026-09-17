@@ -3,9 +3,11 @@ import { motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { WORK, WORK_CATEGORIES, type WorkCategory } from "@/lib/work-data";
 import { seo } from "@/lib/site";
+import { workPhoto } from "@/lib/images";
 
 export const Route = createFileRoute("/work")({
   head: () =>
@@ -119,58 +121,64 @@ function Work() {
                 <Link
                   to="/work/$slug"
                   params={{ slug: w.slug }}
-                  className="flex flex-1 flex-col p-6"
+                  className="flex flex-1 flex-col"
                   aria-label={`${w.title} — read the breakdown`}
                 >
-                  <div className="mb-5 flex items-start justify-between gap-3">
-                    <div className="icon-stage h-[76px] w-[76px]">
-                      <ServiceIcon
-                        slug={w.service}
-                        size={60}
-                        className="icon-float"
-                        eager={i < 3}
-                      />
+                  <Photo
+                    photo={workPhoto(w.slug, w.category)}
+                    ratio="16/9"
+                    sizes="(min-width: 1024px) 420px, 100vw"
+                    tint="soft"
+                    eager={i < 3}
+                    className="border-b border-border"
+                  >
+                    <div className="flex h-full items-start justify-between p-5">
+                      <div className="icon-stage h-[68px] w-[68px] bg-background/80 backdrop-blur-sm">
+                        <ServiceIcon slug={w.service} size={52} className="icon-float" />
+                      </div>
+                      <div className="flex flex-col items-end gap-1.5">
+                        <span className="rounded-full bg-background/75 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-foreground backdrop-blur-sm">
+                          {w.context}
+                        </span>
+                        <span className="rounded-full bg-background/75 px-2 py-0.5 font-mono text-[10px] text-muted-foreground backdrop-blur-sm">
+                          {w.year}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex flex-col items-end gap-1.5">
-                      <span className="rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {w.context}
-                      </span>
-                      <span className="font-mono text-[10px] text-muted-foreground/60">
-                        {w.year}
-                      </span>
-                    </div>
-                  </div>
+                  </Photo>
 
-                  <h2 className="font-display text-base font-bold leading-snug text-foreground">
-                    {w.title}
-                  </h2>
-                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {w.summary}
-                  </p>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h2 className="font-display text-base font-bold leading-snug text-foreground">
+                      {w.title}
+                    </h2>
+                    <p className="mt-2.5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      {w.summary}
+                    </p>
 
-                  {w.metric && (
-                    <div className="mt-5 flex items-baseline gap-2">
-                      <span className="stat-number text-2xl font-bold text-gradient">
-                        {w.metric.value}
-                      </span>
-                      <span className="text-xs text-muted-foreground">{w.metric.label}</span>
-                    </div>
-                  )}
-
-                  <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border pt-4">
-                    {w.stack.slice(0, 4).map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                    {w.stack.length > 4 && (
-                      <span className="px-1 py-0.5 font-mono text-[10px] text-muted-foreground/60">
-                        +{w.stack.length - 4}
-                      </span>
+                    {w.metric && (
+                      <div className="mt-5 flex items-baseline gap-2">
+                        <span className="stat-number text-2xl font-bold text-gradient">
+                          {w.metric.value}
+                        </span>
+                        <span className="text-xs text-muted-foreground">{w.metric.label}</span>
+                      </div>
                     )}
+
+                    <div className="mt-5 flex flex-wrap gap-1.5 border-t border-border pt-4">
+                      {w.stack.slice(0, 4).map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                      {w.stack.length > 4 && (
+                        <span className="px-1 py-0.5 font-mono text-[10px] text-muted-foreground/60">
+                          +{w.stack.length - 4}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </Link>
 

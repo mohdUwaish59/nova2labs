@@ -15,11 +15,13 @@ import {
   X,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { SERVICES } from "@/lib/services-data";
 import { featuredWork, WORK } from "@/lib/work-data";
 import { PRACTICES } from "@/lib/practices";
 import { CONTACT_EMAIL, faqJsonLd, seo } from "@/lib/site";
+import { PAGE_PHOTOS, workPhoto } from "@/lib/images";
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -392,6 +394,39 @@ function Home() {
         </div>
       </section>
 
+      {/* PHOTO BAND */}
+      <section className="relative border-b border-border">
+        <Photo
+          photo={PAGE_PHOTOS.homeBand}
+          ratio="21/9"
+          sizes="100vw"
+          tint="side"
+          className="max-h-[460px]"
+        >
+          <div className="flex h-full items-center">
+            <div className="mx-auto w-full max-w-7xl px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease }}
+                className="max-w-xl"
+              >
+                <h2 className="font-display text-2xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
+                  Built, secured and operated
+                  <br />
+                  <span className="text-gradient">by the same team.</span>
+                </h2>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  The people who write your application also run the identity, the network and the
+                  pipeline underneath it — so there is no gap for problems to hide in.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </Photo>
+      </section>
+
       {/* SELECTED WORK */}
       <section id="results" className="scroll-mt-20 border-b border-border py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
@@ -430,26 +465,34 @@ function Home() {
                 className="card-lift group flex flex-col overflow-hidden rounded-3xl border border-border bg-surface"
               >
                 <Link to="/work/$slug" params={{ slug: w.slug }} className="flex flex-1 flex-col">
-                  <div className="relative border-b border-border bg-hero px-7 pb-7 pt-6">
-                    <div className="flex items-start justify-between">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                        {w.category}
-                      </span>
-                      <span className="rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {w.context}
-                      </span>
+                  <Photo
+                    photo={workPhoto(w.slug, w.category)}
+                    ratio="16/9"
+                    sizes="(min-width: 1024px) 420px, 100vw"
+                    tint="text"
+                    className="border-b border-border"
+                  >
+                    <div className="flex h-full flex-col justify-between p-6">
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="rounded-full bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground backdrop-blur-sm">
+                          {w.category}
+                        </span>
+                        <span className="rounded-full bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
+                          {w.context}
+                        </span>
+                      </div>
+                      {w.metric && (
+                        <div>
+                          <div className="stat-number text-4xl font-bold text-gradient">
+                            {w.metric.value}
+                          </div>
+                          <div className="mt-0.5 text-sm font-semibold text-foreground">
+                            {w.metric.label}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    {w.metric && (
-                      <>
-                        <div className="stat-number mt-5 text-4xl font-bold text-gradient">
-                          {w.metric.value}
-                        </div>
-                        <div className="mt-1 text-sm font-medium text-foreground">
-                          {w.metric.label}
-                        </div>
-                      </>
-                    )}
-                  </div>
+                  </Photo>
                   <div className="flex flex-1 flex-col p-7">
                     <div className="mb-5 flex items-start justify-between gap-3">
                       <div className="icon-stage h-[72px] w-[72px]">
@@ -506,29 +549,39 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="card-lift flex flex-col rounded-3xl border border-border bg-background p-7"
+                className="card-lift flex flex-col overflow-hidden rounded-3xl border border-border bg-background"
               >
-                <h3 className="font-display text-lg font-bold">{pr.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {pr.focus}
-                </p>
-                <ul className="mt-5 space-y-2 border-t border-border pt-5">
-                  {pr.owns.slice(0, 3).map((o) => (
-                    <li key={o} className="flex items-start gap-2.5 text-sm text-foreground/90">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {o}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {pr.skills.slice(0, 6).map((sk) => (
-                    <span
-                      key={sk}
-                      className="rounded-md border border-border bg-surface px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
-                    >
-                      {sk}
-                    </span>
-                  ))}
+                <Photo
+                  photo={
+                    pr.id === "ai-product" ? PAGE_PHOTOS.practiceAi : PAGE_PHOTOS.practiceInfra
+                  }
+                  ratio="21/9"
+                  sizes="(min-width: 768px) 560px, 100vw"
+                  className="border-b border-border"
+                />
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className="font-display text-lg font-bold">{pr.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {pr.focus}
+                  </p>
+                  <ul className="mt-5 space-y-2 border-t border-border pt-5">
+                    {pr.owns.slice(0, 3).map((o) => (
+                      <li key={o} className="flex items-start gap-2.5 text-sm text-foreground/90">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {pr.skills.slice(0, 6).map((sk) => (
+                      <span
+                        key={sk}
+                        className="rounded-md border border-border bg-surface px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                      >
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

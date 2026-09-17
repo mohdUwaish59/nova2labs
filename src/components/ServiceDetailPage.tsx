@@ -2,12 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { ServicesNavCard } from "@/components/ServicesNavCard";
 import type { ServiceDetail } from "@/lib/services-data";
 import { getNextService } from "@/lib/services-data";
 import { workForService } from "@/lib/work-data";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { servicePhoto } from "@/lib/images";
 
 export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
   const next = getNextService(service.slug);
@@ -57,6 +59,19 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
               </span>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* PHOTO */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-6 py-10">
+          <Photo
+            photo={servicePhoto(service.slug)}
+            ratio="21/9"
+            sizes="(min-width: 1024px) 960px, 100vw"
+            eager
+            className="rounded-3xl border border-border"
+          />
         </div>
       </section>
 

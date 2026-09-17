@@ -13,10 +13,12 @@ import {
   Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { SERVICES } from "@/lib/services-data";
 import { WORK } from "@/lib/work-data";
 import { PRACTICES, CERTIFICATIONS } from "@/lib/practices";
 import { seo } from "@/lib/site";
+import { PAGE_PHOTOS } from "@/lib/images";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -210,44 +212,52 @@ function About() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                {
-                  icon: Target,
-                  title: "Outcome-focused",
-                  body: "We measure success by the impact on your business — not lines of code or hours logged.",
-                },
-                {
-                  icon: Zap,
-                  title: "Speed without chaos",
-                  body: "Prototype in days, production in weeks. We move with urgency because we know time costs money.",
-                },
-                {
-                  icon: Award,
-                  title: "Senior-only work",
-                  body: "Senior hands only. No juniors learning the basics on your budget and your timeline.",
-                },
-                {
-                  icon: CheckCircle2,
-                  title: "Zero handoffs",
-                  body: "The engineer you talk to is the engineer building your product. No layers, no surprises.",
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
-                  className="rounded-2xl border border-border bg-surface p-5"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <item.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mb-1.5 font-display text-sm font-semibold">{item.title}</h3>
-                  <p className="text-xs leading-relaxed text-muted-foreground">{item.body}</p>
-                </motion.div>
-              ))}
+            <div className="space-y-4">
+              <Photo
+                photo={PAGE_PHOTOS.aboutMission}
+                ratio="16/9"
+                sizes="(min-width: 1024px) 560px, 100vw"
+                className="rounded-3xl border border-border"
+              />
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  {
+                    icon: Target,
+                    title: "Outcome-focused",
+                    body: "We measure success by the impact on your business — not lines of code or hours logged.",
+                  },
+                  {
+                    icon: Zap,
+                    title: "Speed without chaos",
+                    body: "Prototype in days, production in weeks. We move with urgency because we know time costs money.",
+                  },
+                  {
+                    icon: Award,
+                    title: "Senior-only work",
+                    body: "Senior hands only. No juniors learning the basics on your budget and your timeline.",
+                  },
+                  {
+                    icon: CheckCircle2,
+                    title: "Zero handoffs",
+                    body: "The engineer you talk to is the engineer building your product. No layers, no surprises.",
+                  },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.07 }}
+                    className="rounded-2xl border border-border bg-surface p-5"
+                  >
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-1.5 font-display text-sm font-semibold">{item.title}</h3>
+                    <p className="text-xs leading-relaxed text-muted-foreground">{item.body}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -459,6 +469,13 @@ function About() {
               >
                 Start at week 0 <ArrowRight className="h-4 w-4" />
               </Link>
+
+              <Photo
+                photo={PAGE_PHOTOS.aboutEngagement}
+                ratio="4/3"
+                sizes="(min-width: 1024px) 380px, 100vw"
+                className="mt-8 hidden rounded-3xl border border-border lg:block"
+              />
             </div>
 
             <div className="relative">

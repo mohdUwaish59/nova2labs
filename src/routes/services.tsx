@@ -14,6 +14,8 @@ import { ServiceIcon } from "@/components/ServiceIcons";
 import { SERVICES } from "@/lib/services-data";
 import { seo } from "@/lib/site";
 import { ServicesNavCard } from "@/components/ServicesNavCard";
+import { Photo } from "@/components/Photo";
+import { servicePhoto } from "@/lib/images";
 
 export const Route = createFileRoute("/services")({
   head: () =>
@@ -151,7 +153,14 @@ function Services() {
                   transition={{ duration: 0.5, ease }}
                   className="scroll-mt-24 overflow-hidden rounded-3xl border border-border bg-surface"
                 >
-                  <div className="h-1 w-full bg-gradient-primary opacity-60" />
+                  <Photo
+                    photo={servicePhoto(s.slug)}
+                    ratio="21/9"
+                    sizes="(min-width: 1024px) 900px, 100vw"
+                    tint="soft"
+                    eager={i < 2}
+                    className="max-h-[220px] border-b border-border"
+                  />
                   <div className="p-7 md:p-9">
                     <div className="flex flex-col gap-7 sm:flex-row sm:items-start">
                       <div className="icon-stage h-[132px] w-[132px] shrink-0 md:h-[152px] md:w-[152px]">

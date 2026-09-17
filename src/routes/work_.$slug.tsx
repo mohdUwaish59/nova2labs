@@ -2,9 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageSquare } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { getWork, getNextWork, WORK } from "@/lib/work-data";
 import { getService } from "@/lib/services-data";
+import { workPhoto } from "@/lib/images";
 import { breadcrumbJsonLd, seo, SITE_NAME, absoluteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/work_/$slug")({
@@ -136,6 +138,19 @@ function WorkDetail() {
         </div>
       </section>
 
+      {/* PHOTO */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-5xl px-6 py-10">
+          <Photo
+            photo={workPhoto(w.slug, w.category)}
+            ratio="21/9"
+            sizes="(min-width: 1024px) 960px, 100vw"
+            eager
+            className="rounded-3xl border border-border"
+          />
+        </div>
+      </section>
+
       {/* ── DETAIL ───────────────────────────────────────────── */}
       <section className="border-y border-border py-16 md:py-20">
         <div className="mx-auto grid max-w-5xl gap-12 px-6 lg:grid-cols-[1fr_320px]">
@@ -254,7 +269,12 @@ function WorkDetail() {
                     className="card-lift group rounded-2xl border border-border bg-surface p-5"
                   >
                     <div className="flex items-start gap-4">
-                      <ServiceIcon slug={r.service} size={44} />
+                      <Photo
+                        photo={workPhoto(r.slug, r.category)}
+                        ratio="1/1"
+                        sizes="72px"
+                        className="h-16 w-16 shrink-0 rounded-xl border border-border"
+                      />
                       <div className="min-w-0">
                         <h4 className="font-display text-sm font-semibold leading-snug">
                           {r.title}
