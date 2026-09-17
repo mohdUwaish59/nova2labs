@@ -1,11 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { SERVICES } from "@/lib/services-data";
+import { WORK } from "@/lib/work-data";
+import { SITE_URL } from "@/lib/site";
 
-const BASE_URL = "";
+// Sitemaps require absolute URLs — a relative <loc> makes search engines
+// reject the whole file.
+const BASE_URL = SITE_URL;
 
 interface SitemapEntry {
   path: string;
-  changefreq?: "weekly" | "monthly";
+  changefreq?: "weekly" | "monthly" | "yearly";
   priority?: string;
 }
 
@@ -17,13 +22,29 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/services", changefreq: "monthly", priority: "0.9" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
-          { path: "/contact", changefreq: "monthly", priority: "0.7" },
+          { path: "/work", changefreq: "monthly", priority: "0.9" },
+          { path: "/contact", changefreq: "monthly", priority: "0.9" },
+          { path: "/privacy", changefreq: "yearly", priority: "0.2" },
+          { path: "/terms", changefreq: "yearly", priority: "0.2" },
+          ...SERVICES.map((s) => ({
+            path: `/services/${s.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.8",
+          })),
+          ...WORK.map((w) => ({
+            path: `/work/${w.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.7",
+          })),
         ];
+
+        const lastmod = new Date().toISOString().slice(0, 10);
 
         const urls = entries.map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <lastmod>${lastmod}</lastmod>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,

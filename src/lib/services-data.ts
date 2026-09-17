@@ -1,18 +1,7 @@
-import type { ComponentType } from "react";
-import {
-  IconAiAgent,
-  IconLlmNlp,
-  IconFullStack,
-  IconDevOps,
-  IconNetworking,
-  IconInfrastructure,
-} from "@/components/ServiceIcons";
-
-type IconComponent = ComponentType<{ className?: string }>;
+import type { ServiceSlug } from "@/components/ServiceIcons";
 
 export type ServiceDetail = {
-  slug: string;
-  icon: IconComponent;
+  slug: ServiceSlug;
   title: string;
   tagline: string;
   body: string;
@@ -28,7 +17,6 @@ export type ServiceDetail = {
 export const SERVICES: ServiceDetail[] = [
   {
     slug: "ai-agents",
-    icon: IconAiAgent,
     title: "AI Agents",
     tagline: "Autonomous systems that act, not just answer.",
     body: "Autonomous and assistive agents with tool-use, memory, evaluation and guardrails. From scoped copilots to multi-agent workflows wired into your real systems.",
@@ -42,7 +30,10 @@ export const SERVICES: ServiceDetail[] = [
     ],
     process: [
       { step: "Scope", detail: "Identify the workflow, success metric and acceptance criteria." },
-      { step: "Prototype", detail: "Ship a thin vertical slice with one agent, one tool, real data." },
+      {
+        step: "Prototype",
+        detail: "Ship a thin vertical slice with one agent, one tool, real data.",
+      },
       { step: "Harden", detail: "Add evals, retries, fallbacks, observability and cost ceilings." },
       { step: "Operate", detail: "Hand over with runbooks, dashboards and on-call playbooks." },
     ],
@@ -57,7 +48,6 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: "llm-nlp",
-    icon: IconLlmNlp,
     title: "LLM & NLP",
     tagline: "From raw text to reliable, structured signal.",
     body: "Production LLM systems — model selection, fine-tuning, prompt engineering, classical NLP pipelines and structured extraction that holds up under load.",
@@ -72,8 +62,14 @@ export const SERVICES: ServiceDetail[] = [
     process: [
       { step: "Data audit", detail: "Inventory sources, licensing, PII and label quality." },
       { step: "Baseline", detail: "Start with the simplest model that could work; measure." },
-      { step: "Optimize", detail: "Iterate on retrieval, prompts, fine-tunes — only where it moves the metric." },
-      { step: "Ship", detail: "Deploy behind a typed API with rate limits, caching and observability." },
+      {
+        step: "Optimize",
+        detail: "Iterate on retrieval, prompts, fine-tunes — only where it moves the metric.",
+      },
+      {
+        step: "Ship",
+        detail: "Deploy behind a typed API with rate limits, caching and observability.",
+      },
     ],
     stack: ["PyTorch", "Hugging Face", "spaCy", "LlamaIndex", "Weaviate", "Ray"],
     outcomes: [
@@ -86,7 +82,6 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: "full-stack",
-    icon: IconFullStack,
     title: "Full-Stack Engineering",
     tagline: "Modern web products, shipped end-to-end.",
     body: "Typed APIs, clean data layers, accessible UI and a delivery pipeline that scales with the team. From greenfield products to rescuing stalled codebases.",
@@ -99,7 +94,10 @@ export const SERVICES: ServiceDetail[] = [
       "CI pipeline with previews, tests and one-click rollbacks",
     ],
     process: [
-      { step: "Discovery", detail: "Map users, jobs-to-be-done and the smallest valuable release." },
+      {
+        step: "Discovery",
+        detail: "Map users, jobs-to-be-done and the smallest valuable release.",
+      },
       { step: "Foundations", detail: "Set up the stack, conventions and CI before feature work." },
       { step: "Iterate", detail: "Ship in weekly increments behind feature flags." },
       { step: "Scale", detail: "Profile, cache, denormalize and split services only when needed." },
@@ -115,7 +113,6 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: "devops",
-    icon: IconDevOps,
     title: "DevOps & DevSecOps",
     tagline: "Pipelines and platforms your team can actually operate.",
     body: "CI/CD, infrastructure as code and Kubernetes — with security woven into the pipeline. Cost-aware, observable, reproducible and hardened by default.",
@@ -129,7 +126,10 @@ export const SERVICES: ServiceDetail[] = [
     ],
     process: [
       { step: "Assess", detail: "Audit current infra, pipelines, security posture and cost." },
-      { step: "Design", detail: "Target architecture with explicit trade-offs and migration path." },
+      {
+        step: "Design",
+        detail: "Target architecture with explicit trade-offs and migration path.",
+      },
       { step: "Migrate", detail: "Move workloads in safe slices with rollback at every step." },
       { step: "Enable", detail: "Train the team and leave runbooks they actually use." },
     ],
@@ -144,7 +144,6 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: "networking",
-    icon: IconNetworking,
     title: "Networking",
     tagline: "Networks designed to stay up under real load.",
     body: "Designing and operating networks that stay up. From SD-WAN and segmentation to VPN, routing and edge connectivity for distributed teams and sites.",
@@ -173,7 +172,6 @@ export const SERVICES: ServiceDetail[] = [
   },
   {
     slug: "it-infrastructure",
-    icon: IconInfrastructure,
     title: "IT Infrastructure",
     tagline: "Foundations that scale from 10 to 1,000 people.",
     body: "Foundational IT — directory, identity, endpoint management, virtualization and disaster recovery designed for organizations that need to grow without breaking.",
@@ -200,6 +198,55 @@ export const SERVICES: ServiceDetail[] = [
     lead: "nova2labs",
     startingAt: "$1,500",
   },
+  {
+    slug: "graphic-design",
+    title: "Brand & Product Design",
+    tagline: "A brand that looks like it belongs in the big league.",
+    body: "Logo and identity systems, product UI, decks and marketing assets — designed as one coherent system with real design tokens, so everything your customers see feels like the same company.",
+    points: [
+      "Logo & identity systems",
+      "Product UI & design systems",
+      "Pitch decks & marketing assets",
+    ],
+    deliverables: [
+      "Logo suite: primary, stacked and icon marks, in SVG, PNG and favicon sizes",
+      "Brand guidelines: colour tokens, typography scale, spacing and usage rules",
+      "Design system in Figma, mapped one-to-one to the code that ships it",
+      "Marketing set: social cards, OG images, ad creatives and email headers",
+      "Investor or sales deck built on your new identity",
+    ],
+    process: [
+      {
+        step: "Positioning",
+        detail: "Who you serve, who you compete with, and what the brand has to signal.",
+      },
+      {
+        step: "Direction",
+        detail: "Two or three distinct visual routes — you pick one before any polish begins.",
+      },
+      {
+        step: "Build",
+        detail: "Logo, tokens, type scale and components produced as production-ready assets.",
+      },
+      {
+        step: "Handover",
+        detail: "Editable source files, exports and guidelines — no licence traps, all yours.",
+      },
+    ],
+    stack: ["Figma", "Illustrator", "Inkscape", "Tailwind tokens", "SVG", "Framer Motion"],
+    outcomes: [
+      "One identity across site, product, deck and ads",
+      "Design tokens developers can implement exactly",
+      "Assets in every size and format you'll be asked for",
+    ],
+    lead: "nova2labs",
+    startingAt: "$900",
+  },
 ];
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
+
+export const getNextService = (slug: string) => {
+  const i = SERVICES.findIndex((s) => s.slug === slug);
+  return SERVICES[(i + 1) % SERVICES.length];
+};

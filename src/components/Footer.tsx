@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { SERVICES } from "@/lib/services-data";
+import { CONTACT_EMAIL, LOCATION, SOCIAL } from "@/lib/site";
 
 function Logo() {
   return (
@@ -33,25 +35,23 @@ function Logo() {
         <path d="M431,67 C431,54 410,53 408,68 C406,80 431,80 429,95 C427,110 406,110 404,98" />
         <path d="M18,110 L26,110" />
       </g>
-      <path d="M227,60 C227,42 258,40 259,61 C260,76 242,87 230,99 L226,110 L263,110" stroke="#15C0E0" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M227,60 C227,42 258,40 259,61 C260,76 242,87 230,99 L226,110 L263,110"
+        stroke="#15C0E0"
+        strokeWidth="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
       <circle cx="14" cy="110" r="6.5" fill="#15C0E0" />
     </svg>
   );
 }
 
-const serviceLinks = [
-  { label: "AI Agents",        slug: "ai-agents"       },
-  { label: "LLM & NLP",        slug: "llm-nlp"         },
-  { label: "Full-Stack",       slug: "full-stack"      },
-  { label: "DevOps",           slug: "devops"          },
-  { label: "Networking",       slug: "networking"      },
-  { label: "IT Infrastructure", slug: "it-infrastructure" },
-];
+const serviceLinks = SERVICES.map((s) => ({ label: s.title, slug: s.slug }));
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
-
       {/* Pre-footer CTA banner */}
       <div className="relative overflow-hidden border-b border-border bg-gradient-primary">
         <div className="absolute inset-0 grid-bg opacity-15" aria-hidden />
@@ -78,33 +78,41 @@ export function Footer() {
       <div className="bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="grid gap-12 md:grid-cols-12">
-
             {/* Brand */}
             <div className="md:col-span-5">
               <Logo />
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                A world-class engineering agency delivering production AI systems,
-                cloud infrastructure, and custom software for businesses that
-                refuse to settle for average.
+                A senior-led engineering studio building production AI systems, software platforms
+                and cloud infrastructure — fixed scope, documented, and fully yours on handover.
               </p>
-              <div className="mt-7 flex gap-2.5">
-                {[
-                  { href: "mailto:nova2labai@gmail.com", icon: Mail, label: "Email" },
-                  { href: "https://github.com/nova2labs", icon: Github, label: "GitHub" },
-                  { href: "https://linkedin.com/company/nova2labs", icon: Linkedin, label: "LinkedIn" },
-                  { href: "https://twitter.com/nova2labs", icon: Twitter, label: "X / Twitter" },
-                ].map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    aria-label={label}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:border-primary/50 hover:bg-secondary hover:text-primary"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
+              <div className="mt-7 flex flex-wrap gap-2.5">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-semibold text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
+                >
+                  <Mail className="h-3.5 w-3.5" />
+                  {CONTACT_EMAIL}
+                </a>
+                {Object.entries(SOCIAL)
+                  .filter(([, href]) => href)
+                  .map(([key, href]) => (
+                    <a
+                      key={key}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={key}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
+                    >
+                      {key === "github" ? (
+                        <Github className="h-4 w-4" />
+                      ) : key === "linkedin" ? (
+                        <Linkedin className="h-4 w-4" />
+                      ) : (
+                        <Twitter className="h-4 w-4" />
+                      )}
+                    </a>
+                  ))}
               </div>
             </div>
 
@@ -117,10 +125,11 @@ export function Footer() {
               </h4>
               <ul className="space-y-3.5 text-sm">
                 {[
-                  { to: "/",         label: "Home"     },
+                  { to: "/", label: "Home" },
                   { to: "/services", label: "Services" },
-                  { to: "/about",    label: "About"    },
-                  { to: "/contact",  label: "Contact"  },
+                  { to: "/work", label: "Work" },
+                  { to: "/about", label: "About" },
+                  { to: "/contact", label: "Contact" },
                 ].map(({ to, label }) => (
                   <li key={to}>
                     <Link
@@ -162,16 +171,16 @@ export function Footer() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:nova2labai@gmail.com"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="flex items-start gap-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    contact@nova2labs.com
+                    <span className="break-all">{CONTACT_EMAIL}</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  Remote · Worldwide
+                  Remote · {LOCATION.serves}
                 </li>
               </ul>
 
@@ -182,7 +191,6 @@ export function Footer() {
                 Free estimate <ArrowRight className="h-3 w-3" />
               </Link>
             </div>
-
           </div>
         </div>
       </div>
@@ -190,7 +198,15 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-muted-foreground sm:flex-row">
-          <span>© {new Date().getFullYear()} nova2labs. All rights reserved.</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <span>© {new Date().getFullYear()} nova2labs. All rights reserved.</span>
+            <Link to="/privacy" className="transition-colors hover:text-foreground">
+              Privacy
+            </Link>
+            <Link to="/terms" className="transition-colors hover:text-foreground">
+              Terms
+            </Link>
+          </div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
@@ -200,7 +216,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-
     </footer>
   );
 }

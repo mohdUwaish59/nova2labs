@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { LucideIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import { LucideIcon } from "lucide-react";
 
 interface QuickAction {
-  icon: LucideIcon
-  label: string
-  onClick: () => void
+  icon: LucideIcon;
+  label: string;
+  onClick: () => void;
 }
 
 export function QuickActionButtons({ actions }: { actions: QuickAction[] }) {
@@ -23,7 +23,8 @@ export function QuickActionButtons({ actions }: { actions: QuickAction[] }) {
           onClick={action.onClick}
           className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-3 text-left transition-all hover:border-blue-300 hover:bg-blue-50"
           style={{
-            boxShadow: "rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px",
+            boxShadow:
+              "rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px",
           }}
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
@@ -33,5 +34,5 @@ export function QuickActionButtons({ actions }: { actions: QuickAction[] }) {
         </button>
       ))}
     </motion.div>
-  )
+  );
 }

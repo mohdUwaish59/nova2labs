@@ -1,12 +1,16 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
 export function AnimatedOrb({
   className,
   variant = "default",
   size = 32,
-}: { className?: string; variant?: "default" | "red"; size?: number }) {
+}: {
+  className?: string;
+  variant?: "default" | "red";
+  size?: number;
+}) {
   const colors =
     variant === "red"
       ? {
@@ -24,14 +28,14 @@ export function AnimatedOrb({
           circle3: "#9bc761",
           circle4: "#ccd4f2",
           circle5: "#f472b6",
-        }
+        };
 
-  const blurAmount = Math.max(6, size * 0.15)
-  const circle1Size = size * 0.45
-  const circle2Size = size * 0.35
-  const circle3Size = size * 0.5
-  const circle4Size = size * 0.25
-  const circle5Size = size * 0.3
+  const blurAmount = Math.max(6, size * 0.15);
+  const circle1Size = size * 0.45;
+  const circle2Size = size * 0.35;
+  const circle3Size = size * 0.5;
+  const circle4Size = size * 0.25;
+  const circle5Size = size * 0.3;
 
   return (
     <div
@@ -114,5 +118,5 @@ export function AnimatedOrb({
         }}
       />
     </div>
-  )
+  );
 }

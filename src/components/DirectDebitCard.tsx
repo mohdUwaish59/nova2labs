@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Repeat, Calendar, Clock, MoreHorizontal } from "lucide-react"
+import { motion } from "framer-motion";
+import { Repeat, Calendar, Clock, MoreHorizontal } from "lucide-react";
 
 export interface DirectDebitCardProps {
-  payeeName?: string
-  amount?: number
-  frequency?: "weekly" | "monthly" | "yearly"
-  nextPaymentDate?: string
-  lastPaymentDate?: string
-  accountEnding?: string
-  status?: "active" | "paused" | "pending"
-  category?: string
+  payeeName?: string;
+  amount?: number;
+  frequency?: "weekly" | "monthly" | "yearly";
+  nextPaymentDate?: string;
+  lastPaymentDate?: string;
+  accountEnding?: string;
+  status?: "active" | "paused" | "pending";
+  category?: string;
 }
 
 export function DirectDebitCard({
@@ -28,13 +28,13 @@ export function DirectDebitCard({
     active: "bg-green-100 text-green-700",
     paused: "bg-yellow-100 text-yellow-700",
     pending: "bg-blue-100 text-blue-700",
-  }
+  };
 
   const frequencyLabel = {
     weekly: "Weekly",
     monthly: "Monthly",
     yearly: "Yearly",
-  }
+  };
 
   return (
     <motion.div
@@ -71,7 +71,9 @@ export function DirectDebitCard({
               <p className="text-sm text-slate-500">{frequencyLabel[frequency]} Payment</p>
               <p className="text-2xl font-bold text-slate-900">${amount.toFixed(2)}</p>
             </div>
-            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${statusColors[status]}`}>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-semibold ${statusColors[status]}`}
+            >
               {status.charAt(0).toUpperCase() + status.slice(1)}
             </span>
           </div>
@@ -105,5 +107,5 @@ export function DirectDebitCard({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

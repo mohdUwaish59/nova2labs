@@ -5,10 +5,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import { motion, AnimatePresence } from "motion/react";
 
 const nav = [
-  { to: "/",        label: "Home"     },
+  { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/about",    label: "About"    },
-  { to: "/contact",  label: "Contact"  },
+  { to: "/work", label: "Work" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 function Logo({ className = "" }: { className?: string }) {
@@ -43,7 +44,13 @@ function Logo({ className = "" }: { className?: string }) {
         <path d="M431,67 C431,54 410,53 408,68 C406,80 431,80 429,95 C427,110 406,110 404,98" />
         <path d="M18,110 L26,110" />
       </g>
-      <path d="M227,60 C227,42 258,40 259,61 C260,76 242,87 230,99 L226,110 L263,110" stroke="#15C0E0" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M227,60 C227,42 258,40 259,61 C260,76 242,87 230,99 L226,110 L263,110"
+        stroke="#15C0E0"
+        strokeWidth="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
       <circle cx="14" cy="110" r="6.5" fill="#15C0E0" />
     </svg>
   );
@@ -63,7 +70,9 @@ export function Header() {
   // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -89,7 +98,9 @@ export function Header() {
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
                 activeProps={{ className: "text-foreground bg-secondary" }}
-                inactiveProps={{ className: "text-muted-foreground hover:text-foreground hover:bg-secondary/60" }}
+                inactiveProps={{
+                  className: "text-muted-foreground hover:text-foreground hover:bg-secondary/60",
+                }}
                 className="rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200"
               >
                 {item.label}
@@ -115,11 +126,23 @@ export function Header() {
             >
               <AnimatePresence mode="wait" initial={false}>
                 {open ? (
-                  <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <motion.span
+                    key="x"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
                     <X className="h-4 w-4" />
                   </motion.span>
                 ) : (
-                  <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <motion.span
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
                     <Menu className="h-4 w-4" />
                   </motion.span>
                 )}
@@ -140,7 +163,10 @@ export function Header() {
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-x-0 top-16 z-40 border-b border-border bg-background/95 backdrop-blur-2xl md:hidden"
           >
-            <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-5" aria-label="Mobile navigation">
+            <nav
+              className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-5"
+              aria-label="Mobile navigation"
+            >
               {nav.map((item, i) => (
                 <motion.div
                   key={item.to}

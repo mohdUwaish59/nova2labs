@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/lib/theme";
+import { organizationJsonLd, OG_IMAGE, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -83,25 +84,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "nova2labs — AI & Engineering Solutions" },
+      { title: `${SITE_NAME} — ${SITE_TAGLINE}` },
       {
         name: "description",
         content:
-          "Freelance engineering agency specializing in AI agents, cloud infrastructure, custom software development, and DevOps solutions.",
+          "nova2labs is an engineering studio building production AI agents, LLM systems, full-stack products, DevOps platforms and IT infrastructure — fixed scope, senior engineers.",
       },
-      { name: "author", content: "nova2labs" },
-      { property: "og:title", content: "nova2labs — AI & Engineering Solutions" },
-      {
-        property: "og:description",
-        content:
-          "Professional AI solutions, cloud infrastructure, full-stack development, and DevOps services for modern businesses.",
-      },
+      { name: "author", content: SITE_NAME },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "theme-color", content: "#15C0E0" },
+      { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -113,6 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         children: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');document.documentElement.style.colorScheme=d?'dark':'light';}catch(e){}})();`,
       },
+      { type: "application/ld+json", children: JSON.stringify(organizationJsonLd()) },
     ],
   }),
   shellComponent: RootShell,
@@ -123,7 +124,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // The inline theme script sets class/color-scheme before React hydrates,
+    // so the server markup intentionally differs here.
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

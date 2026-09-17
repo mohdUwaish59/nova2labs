@@ -2,152 +2,295 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   Clock,
   MessageSquare,
   ShieldCheck,
+  Sparkles,
   Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
-import { HexIcon } from "@/components/ServiceIcons";
+import { ServiceIcon } from "@/components/ServiceIcons";
 import { SERVICES } from "@/lib/services-data";
+import { seo } from "@/lib/site";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — nova2labs" },
-      {
-        name: "description",
-        content:
-          "AI agents, LLM/NLP systems, full-stack engineering, DevOps, DevSecOps, networking and IT infrastructure — delivered end-to-end by nova2labs.",
-      },
-      { property: "og:title", content: "Services — nova2labs" },
-      {
-        property: "og:description",
-        content:
-          "World-class engineering services across AI, full-stack, DevOps and IT infrastructure.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Services — AI, Software, DevOps & Infrastructure | nova2labs",
+      description:
+        "Seven engineering services delivered end-to-end: AI agents, LLM & NLP, full-stack engineering, DevOps & DevSecOps, networking, IT infrastructure and brand & product design. Fixed-scope pricing from $900.",
+      path: "/services",
+    }),
   component: Services,
 });
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 const guarantees = [
-  { icon: Zap,          title: "Working prototype in week 1",     body: "Not after months of planning — you see real progress immediately." },
-  { icon: CheckCircle2, title: "Fixed price, no surprises",        body: "Scope agreed upfront. What we quote is what you pay." },
-  { icon: ShieldCheck,  title: "Security built-in, not bolted on", body: "DevSecOps practices from line one, every project." },
-  { icon: Clock,        title: "24-hour response guarantee",       body: "Every serious inquiry gets a response within one business day." },
-  { icon: MessageSquare, title: "Direct engineer access",          body: "Talk to the person building your product, always." },
-  { icon: ArrowUpRight, title: "100% IP ownership on handover",   body: "Source code, docs, infrastructure — fully yours at delivery." },
+  {
+    icon: Zap,
+    title: "Working prototype in week 1",
+    body: "Not after months of planning — you see real software immediately.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Fixed price, no surprises",
+    body: "Scope agreed upfront. What we quote is what you pay.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Security built in, not bolted on",
+    body: "DevSecOps practice from line one, on every project.",
+  },
+  {
+    icon: Clock,
+    title: "24-hour response guarantee",
+    body: "Every serious inquiry gets a reply within one business day.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Direct engineer access",
+    body: "Talk to the person building your product, always.",
+  },
+  {
+    icon: Sparkles,
+    title: "100% IP ownership at handover",
+    body: "Source code, docs and infrastructure — fully yours.",
+  },
+];
+
+const tiers = [
+  {
+    range: "$900 – $5,000",
+    label: "Scoped feature, design or integration",
+    detail:
+      "A single agent, pipeline, brand system, migration or integration with a clear boundary.",
+  },
+  {
+    range: "$5,000 – $15,000",
+    label: "Full product or MVP",
+    detail: "End-to-end product build: data model, API, UI, auth, CI and launch.",
+  },
+  {
+    range: "$15,000 – $40,000",
+    label: "Enterprise platform or AI system",
+    detail: "Multi-service platforms, agent fleets, Kubernetes and compliance work.",
+  },
+  {
+    range: "Retainer",
+    label: "Ongoing partnership",
+    detail: "Monthly capacity for maintenance, monitoring and continuous delivery.",
+  },
 ];
 
 function Services() {
   return (
     <PageShell>
-
-      {/* ════════════════════════════════════════════════════════ HERO */}
-      <section className="relative overflow-hidden bg-hero min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 grid-bg opacity-30" aria-hidden />
-        <div className="hero-blob-1 top-[-200px] right-[0%]" aria-hidden />
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-hero">
+        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
+        <div className="hero-blob-1 right-0 top-[-200px]" aria-hidden />
         <div className="hero-blob-3 bottom-[-100px] left-[20%]" aria-hidden />
 
-        <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-36 w-full">
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-24 md:pb-20 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-4xl"
+            transition={{ duration: 0.7, ease }}
           >
             <div className="badge-primary mb-8">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              What we build
+              Services
             </div>
-            <h1 className="font-display text-5xl font-bold tracking-tight md:text-7xl leading-[0.95]">
-              One team.
+            <h1 className="max-w-4xl font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
+              Seven services.
               <br />
-              <span className="text-gradient">Every layer of the stack.</span>
+              <span className="text-gradient">One senior team.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-              From AI agents that work autonomously to the infrastructure they
-              run on — nova2labs handles the full stack so you don't have to
-              coordinate five different vendors.
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Pick the piece you need or hand us the whole stack. Every engagement is fixed-scope,
+              fixed-price and led by the engineers who do the work.
             </p>
+
+            <nav className="mt-10 flex flex-wrap gap-2" aria-label="Jump to a service">
+              {SERVICES.map((s) => (
+                <a
+                  key={s.slug}
+                  href={`#${s.slug}`}
+                  className="rounded-full border border-border bg-surface/80 px-4 py-2 text-xs font-medium text-muted-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:text-foreground"
+                >
+                  {s.title}
+                </a>
+              ))}
+            </nav>
           </motion.div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════ SERVICE CARDS */}
-      <section className="border-y border-border py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s, i) => (
-              <motion.div
-                key={s.slug}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: (i % 3) * 0.07 }}
+      {/* SERVICE ROWS */}
+      <section className="border-y border-border">
+        {SERVICES.map((s, i) => (
+          <motion.article
+            key={s.slug}
+            id={s.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease }}
+            className={`scroll-mt-16 border-b border-border py-16 last:border-b-0 md:py-20 ${i % 2 === 1 ? "bg-surface/40" : ""}`}
+          >
+            <div className="mx-auto max-w-7xl px-6">
+              <div
+                className={`grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16 ${i % 2 === 1 ? "lg:grid-cols-[1fr_auto]" : ""}`}
               >
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className="card-lift spotlight group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface"
-                >
-                  {/* Gradient accent bar */}
-                  <div className="h-0.5 w-full bg-gradient-primary opacity-0 transition-opacity group-hover:opacity-100" />
-
-                  <div className="flex flex-col flex-1 p-7">
-                    <div className="flex items-start justify-between">
-                      <HexIcon size={48} className="text-primary shrink-0 transition-transform group-hover:scale-105">
-                        <s.icon className="h-5 w-5" />
-                      </HexIcon>
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-                    </div>
-
-                    <h3 className="mt-5 font-display text-xl font-semibold">{s.title}</h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground flex-1">{s.body}</p>
-
-                    <ul className="mt-5 space-y-2 border-t border-border pt-5">
-                      {s.points.map((p) => (
-                        <li key={p} className="flex items-center gap-2.5 text-xs text-muted-foreground">
-                          <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {s.startingAt && (
-                      <div className="mt-5 flex items-center justify-between">
-                        <span className="badge-primary">From {s.startingAt}</span>
-                        <span className="font-mono text-xs uppercase tracking-wider text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                          View details →
-                        </span>
-                      </div>
-                    )}
+                <div className={`flex justify-start ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                  <div className="icon-stage h-[200px] w-[200px]">
+                    <ServiceIcon slug={s.slug} size={168} eager={i < 2} />
                   </div>
-                </Link>
+                </div>
+
+                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="font-mono text-xs text-muted-foreground/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+                      {s.title}
+                    </h2>
+                    {s.startingAt && <span className="badge-primary">From {s.startingAt}</span>}
+                  </div>
+
+                  <p className="mt-3 text-lg font-medium text-primary">{s.tagline}</p>
+                  <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{s.body}</p>
+
+                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                    <div>
+                      <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                        What's included
+                      </h3>
+                      <ul className="space-y-2">
+                        {s.points.map((p) => (
+                          <li
+                            key={p}
+                            className="flex items-start gap-2.5 text-sm text-foreground/90"
+                          >
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                        Typical outcome
+                      </h3>
+                      <ul className="space-y-2">
+                        {s.outcomes.slice(0, 3).map((o) => (
+                          <li
+                            key={o}
+                            className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                          >
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                            {o}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
+                    <Link
+                      to="/services/$slug"
+                      params={{ slug: s.slug }}
+                      className="group inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition-all hover:border-primary/50"
+                    >
+                      Full breakdown
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                    <Link
+                      to="/contact"
+                      search={{ service: s.slug }}
+                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
+                    >
+                      Get a quote
+                    </Link>
+                    <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+                      {s.stack.slice(0, 4).join(" · ")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </section>
+
+      {/* PRICING */}
+      <section className="border-b border-border py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="badge-primary mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              Pricing
+            </div>
+            <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+              Transparent, <span className="text-gradient">scope-based pricing.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              No hourly billing surprises. You approve a fixed price before we write a single line
+              of code.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {tiers.map((t, i) => (
+              <motion.div
+                key={t.label}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="card-lift flex flex-col rounded-2xl border border-border bg-surface p-7"
+              >
+                <div className="font-display text-xl font-bold text-foreground">{t.range}</div>
+                <div className="mt-2 font-mono text-[11px] uppercase tracking-widest text-primary">
+                  {t.label}
+                </div>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {t.detail}
+                </p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
+            >
+              Get a free estimate
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <span className="text-sm text-muted-foreground">
+              Fixed quote within 48 hours of our call.
+            </span>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════ GUARANTEES */}
+      {/* GUARANTEES */}
       <section className="border-b border-border bg-surface/40 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-2xl text-center mb-16">
-            <div className="badge-primary mb-6">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="badge-primary mb-5">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Our guarantees
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              What every engagement
-              <br />
-              <span className="text-gradient">includes by default</span>
+              Included in <span className="text-gradient">every engagement.</span>
             </h2>
           </div>
-
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {guarantees.map((g, i) => (
               <motion.div
@@ -156,13 +299,13 @@ function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: (i % 3) * 0.07 }}
-                className="flex gap-5 rounded-2xl border border-border bg-surface p-6"
+                className="flex gap-5 rounded-2xl border border-border bg-background p-6"
               >
-                <HexIcon size={44} className="text-primary shrink-0">
-                  <g.icon className="h-4 w-4" />
-                </HexIcon>
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <g.icon className="h-5 w-5" />
+                </div>
                 <div>
-                  <h3 className="font-display text-sm font-semibold mb-1.5">{g.title}</h3>
+                  <h3 className="mb-1.5 font-display text-sm font-bold">{g.title}</h3>
                   <p className="text-xs leading-relaxed text-muted-foreground">{g.body}</p>
                 </div>
               </motion.div>
@@ -171,77 +314,17 @@ function Services() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════ PRICING */}
-      <section className="border-b border-border py-24 md:py-32">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="overflow-hidden rounded-3xl border border-border bg-surface">
-            {/* Top gradient stripe */}
-            <div className="h-1 w-full bg-gradient-primary" />
-
-            <div className="grid gap-10 p-10 md:grid-cols-[1fr_1.6fr] md:p-16">
-              <div>
-                <div className="badge-primary mb-5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  Pricing
-                </div>
-                <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-                  Transparent,
-                  <br />
-                  <span className="text-gradient">scope-based pricing</span>
-                </h2>
-              </div>
-
-              <div className="space-y-5">
-                <p className="text-muted-foreground leading-relaxed">
-                  We don't charge by the hour and surprise you at month-end. Every engagement
-                  starts with a clear scope — you know what you're getting and what it costs
-                  before we write a single line of code.
-                </p>
-
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { range: "$1,500 – $5,000",   label: "Scoped feature / integration" },
-                    { range: "$5,000 – $15,000",  label: "Full-stack product / MVP" },
-                    { range: "$15,000 – $40,000", label: "Enterprise platform / AI system" },
-                    { range: "Custom",             label: "Ongoing retainer / scale" },
-                  ].map((tier) => (
-                    <div key={tier.label} className="rounded-xl border border-border bg-background p-4">
-                      <div className="font-display text-base font-bold text-foreground">{tier.range}</div>
-                      <div className="mt-1 font-mono text-[11px] text-muted-foreground">{tier.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-sm text-muted-foreground">
-                  Not sure which tier fits? Send us a brief and we'll give you an honest estimate — no
-                  commitment, no pitch.
-                </p>
-
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
-                >
-                  Get a free estimate
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════ CTA */}
-      <section className="relative overflow-hidden py-36">
+      {/* CTA */}
+      <section className="relative overflow-hidden py-28 md:py-36">
         <div className="absolute inset-0 bg-hero" aria-hidden />
-        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
-        <div className="hero-blob-2 top-[-100px] left-[-50px]" aria-hidden />
-
+        <div className="absolute inset-0 grid-bg opacity-20" aria-hidden />
+        <div className="hero-blob-2 left-[-50px] top-[-100px]" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease }}
           >
             <h2 className="font-display text-5xl font-bold tracking-tight md:text-6xl">
               Not sure where
@@ -249,28 +332,27 @@ function Services() {
               <span className="text-gradient">to start?</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-lg text-muted-foreground">
-              Send us a brief — we'll respond with a clear path forward, an honest
-              estimate, and zero pressure.
+              Send us a two-line brief. We'll reply with the path we'd take, an honest estimate, and
+              no pressure whatsoever.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-glow transition-all hover:scale-[1.03]"
+                className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.03]"
               >
-                Contact us
+                Start the conversation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                to="/about"
+                to="/work"
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface/80 px-8 py-4 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:bg-surface"
               >
-                About nova2labs
+                See our work
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
-
     </PageShell>
   );
 }
