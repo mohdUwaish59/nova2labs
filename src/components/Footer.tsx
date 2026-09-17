@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 
-function FooterLogo() {
+function Logo() {
   return (
     <svg
       viewBox="0 0 452 140"
@@ -39,126 +39,168 @@ function FooterLogo() {
   );
 }
 
+const serviceLinks = [
+  { label: "AI Agents",        slug: "ai-agents"       },
+  { label: "LLM & NLP",        slug: "llm-nlp"         },
+  { label: "Full-Stack",       slug: "full-stack"      },
+  { label: "DevOps",           slug: "devops"          },
+  { label: "Networking",       slug: "networking"      },
+  { label: "IT Infrastructure", slug: "it-infrastructure" },
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface">
-      {/* Main footer grid */}
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-12">
+    <footer className="border-t border-border">
 
-          {/* Brand col */}
-          <div className="md:col-span-5">
-            <FooterLogo />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A freelance engineering agency delivering AI solutions, cloud infrastructure,
-              custom software development, and DevOps services for modern businesses.
+      {/* Pre-footer CTA banner */}
+      <div className="relative overflow-hidden border-b border-border bg-gradient-primary">
+        <div className="absolute inset-0 grid-bg opacity-15" aria-hidden />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-14 text-center md:flex-row md:text-left">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-primary-foreground/70 mb-2">
+              Ready to ship something great?
             </p>
+            <h3 className="font-display text-2xl font-bold text-primary-foreground md:text-3xl">
+              Let's build your next project together.
+            </h3>
+          </div>
+          <Link
+            to="/contact"
+            className="group inline-flex shrink-0 items-center gap-2.5 rounded-xl bg-primary-foreground px-7 py-4 text-sm font-bold text-primary shadow-elegant transition-all hover:scale-[1.03]"
+          >
+            Start a project
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
 
-            {/* Social icons */}
-            <div className="mt-6 flex gap-3">
-              <a
-                href="mailto:contact@nova2labs.com"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-[#15C0E0] hover:text-[#15C0E0]"
-                aria-label="Email"
-              >
-                <Mail className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-[#15C0E0] hover:text-[#15C0E0]"
-                aria-label="GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-[#15C0E0] hover:text-[#15C0E0]"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
+      {/* Main footer */}
+      <div className="bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="grid gap-12 md:grid-cols-12">
+
+            {/* Brand */}
+            <div className="md:col-span-5">
+              <Logo />
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                A world-class engineering agency delivering production AI systems,
+                cloud infrastructure, and custom software for businesses that
+                refuse to settle for average.
+              </p>
+              <div className="mt-7 flex gap-2.5">
+                {[
+                  { href: "mailto:nova2labai@gmail.com", icon: Mail, label: "Email" },
+                  { href: "https://github.com/nova2labs", icon: Github, label: "GitHub" },
+                  { href: "https://linkedin.com/company/nova2labs", icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://twitter.com/nova2labs", icon: Twitter, label: "X / Twitter" },
+                ].map(({ href, icon: Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={label}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:border-primary/50 hover:bg-secondary hover:text-primary"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
             </div>
+
+            <div className="hidden md:col-span-1 md:block" />
+
+            {/* Company links */}
+            <div className="md:col-span-2">
+              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
+                Company
+              </h4>
+              <ul className="space-y-3.5 text-sm">
+                {[
+                  { to: "/",         label: "Home"     },
+                  { to: "/services", label: "Services" },
+                  { to: "/about",    label: "About"    },
+                  { to: "/contact",  label: "Contact"  },
+                ].map(({ to, label }) => (
+                  <li key={to}>
+                    <Link
+                      to={to as "/"}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="md:col-span-2">
+              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
+                Services
+              </h4>
+              <ul className="space-y-3.5 text-sm">
+                {serviceLinks.map(({ label, slug }) => (
+                  <li key={slug}>
+                    <Link
+                      to="/services/$slug"
+                      params={{ slug }}
+                      className="text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="md:col-span-2">
+              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
+                Contact
+              </h4>
+              <ul className="space-y-4">
+                <li>
+                  <a
+                    href="mailto:nova2labai@gmail.com"
+                    className="flex items-start gap-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    contact@nova2labs.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  Remote · Worldwide
+                </li>
+              </ul>
+
+              <Link
+                to="/contact"
+                className="mt-6 inline-flex items-center gap-1.5 rounded-xl border border-primary/30 bg-primary/8 px-4 py-2 text-xs font-semibold text-primary transition-all hover:bg-primary/15"
+              >
+                Free estimate <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+
           </div>
-
-          {/* Spacer */}
-          <div className="hidden md:col-span-1 md:block" />
-
-          {/* Navigate col */}
-          <div className="md:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-foreground">
-              Company
-            </h4>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li>
-                <Link to="/" className="text-muted-foreground transition-colors hover:text-[#15C0E0]">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-muted-foreground transition-colors hover:text-[#15C0E0]">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-muted-foreground transition-colors hover:text-[#15C0E0]">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-muted-foreground transition-colors hover:text-[#15C0E0]">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services col */}
-          <div className="md:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-foreground">
-              Services
-            </h4>
-            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-              <li>AI Solutions</li>
-              <li>Cloud Infrastructure</li>
-              <li>Custom Software</li>
-              <li>DevOps</li>
-            </ul>
-          </div>
-
-          {/* Contact col */}
-          <div className="md:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-foreground">
-              Contact
-            </h4>
-            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <Mail className="h-3.5 w-3.5 shrink-0 text-[#15C0E0]" />
-                <span>contact@nova2labs.com</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 shrink-0 text-[#15C0E0]" />
-                <span>Remote · Worldwide</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5 shrink-0 text-[#15C0E0]" />
-                <span>Available on request</span>
-              </li>
-            </ul>
-          </div>
-
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-border">
+      <div className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-5 text-xs text-muted-foreground sm:flex-row">
           <span>© {new Date().getFullYear()} nova2labs. All rights reserved.</span>
-          <div className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#15C0E0]" />
-            <span className="font-mono">v1.0 · Built with precision</span>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+            </span>
+            <span className="font-mono">Accepting new projects</span>
           </div>
         </div>
       </div>
+
     </footer>
   );
 }

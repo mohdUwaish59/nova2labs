@@ -1,17 +1,18 @@
+import type { ComponentType } from "react";
 import {
-  Bot,
-  Cloud,
-  Code2,
-  Network,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-  type LucideIcon,
-} from "lucide-react";
+  IconAiAgent,
+  IconLlmNlp,
+  IconFullStack,
+  IconDevOps,
+  IconNetworking,
+  IconInfrastructure,
+} from "@/components/ServiceIcons";
+
+type IconComponent = ComponentType<{ className?: string }>;
 
 export type ServiceDetail = {
   slug: string;
-  icon: LucideIcon;
+  icon: IconComponent;
   title: string;
   tagline: string;
   body: string;
@@ -20,13 +21,14 @@ export type ServiceDetail = {
   process: { step: string; detail: string }[];
   stack: string[];
   outcomes: string[];
-  lead: "Mohd Uwaish" | "Muhammad Hammad" | "Uwaish & Hammad";
+  lead: string;
+  startingAt?: string;
 };
 
 export const SERVICES: ServiceDetail[] = [
   {
     slug: "ai-agents",
-    icon: Bot,
+    icon: IconAiAgent,
     title: "AI Agents",
     tagline: "Autonomous systems that act, not just answer.",
     body: "Autonomous and assistive agents with tool-use, memory, evaluation and guardrails. From scoped copilots to multi-agent workflows wired into your real systems.",
@@ -50,11 +52,12 @@ export const SERVICES: ServiceDetail[] = [
       "Auditable, replayable agent decisions",
       "Predictable per-task cost and latency",
     ],
-    lead: "Mohd Uwaish",
+    lead: "nova2labs",
+    startingAt: "$3,500",
   },
   {
     slug: "llm-nlp",
-    icon: Sparkles,
+    icon: IconLlmNlp,
     title: "LLM & NLP",
     tagline: "From raw text to reliable, structured signal.",
     body: "Production LLM systems — model selection, fine-tuning, prompt engineering, classical NLP pipelines and structured extraction that holds up under load.",
@@ -78,11 +81,12 @@ export const SERVICES: ServiceDetail[] = [
       "Deterministic, schema-validated outputs",
       "Repeatable training and eval pipelines",
     ],
-    lead: "Mohd Uwaish",
+    lead: "nova2labs",
+    startingAt: "$2,500",
   },
   {
     slug: "full-stack",
-    icon: Code2,
+    icon: IconFullStack,
     title: "Full-Stack Engineering",
     tagline: "Modern web products, shipped end-to-end.",
     body: "Typed APIs, clean data layers, accessible UI and a delivery pipeline that scales with the team. From greenfield products to rescuing stalled codebases.",
@@ -106,11 +110,12 @@ export const SERVICES: ServiceDetail[] = [
       "A codebase your team can extend without us",
       "Measurable performance and accessibility budgets",
     ],
-    lead: "Uwaish & Hammad",
+    lead: "nova2labs",
+    startingAt: "$5,000",
   },
   {
     slug: "devops",
-    icon: Cloud,
+    icon: IconDevOps,
     title: "DevOps & DevSecOps",
     tagline: "Pipelines and platforms your team can actually operate.",
     body: "CI/CD, infrastructure as code and Kubernetes — with security woven into the pipeline. Cost-aware, observable, reproducible and hardened by default.",
@@ -134,11 +139,12 @@ export const SERVICES: ServiceDetail[] = [
       "Security findings caught at PR time, not in production",
       "Lower cloud bill through right-sizing and policy",
     ],
-    lead: "Muhammad Hammad",
+    lead: "nova2labs",
+    startingAt: "$2,000",
   },
   {
     slug: "networking",
-    icon: Network,
+    icon: IconNetworking,
     title: "Networking",
     tagline: "Networks designed to stay up under real load.",
     body: "Designing and operating networks that stay up. From SD-WAN and segmentation to VPN, routing and edge connectivity for distributed teams and sites.",
@@ -162,11 +168,12 @@ export const SERVICES: ServiceDetail[] = [
       "Reduced incidents and faster MTTR",
       "Secure remote access without VPN sprawl",
     ],
-    lead: "Muhammad Hammad",
+    lead: "nova2labs",
+    startingAt: "$1,500",
   },
   {
     slug: "it-infrastructure",
-    icon: Terminal,
+    icon: IconInfrastructure,
     title: "IT Infrastructure",
     tagline: "Foundations that scale from 10 to 1,000 people.",
     body: "Foundational IT — directory, identity, endpoint management, virtualization and disaster recovery designed for organizations that need to grow without breaking.",
@@ -190,7 +197,8 @@ export const SERVICES: ServiceDetail[] = [
       "Tested recovery — not just backups",
       "Clean joiner / mover / leaver workflows",
     ],
-    lead: "Muhammad Hammad",
+    lead: "nova2labs",
+    startingAt: "$1,500",
   },
 ];
 
