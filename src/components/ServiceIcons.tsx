@@ -250,3 +250,45 @@ export function HexIcon({
     </div>
   );
 }
+
+/* ── ServiceSlug type — for work-data and other consumers ─────────────────── */
+export type ServiceSlug =
+  | "ai-agents"
+  | "llm-nlp"
+  | "full-stack"
+  | "devops"
+  | "networking"
+  | "it-infrastructure"
+  | "graphic-design";
+
+/* ── ServiceIcon — img-based renderer using /public/icons/services/*.svg ──── */
+import type { CSSProperties } from "react";
+
+export function ServiceIcon({
+  slug,
+  size = 64,
+  className = "",
+  style,
+  eager = false,
+}: {
+  slug: ServiceSlug | string;
+  size?: number;
+  className?: string;
+  style?: CSSProperties;
+  eager?: boolean;
+}) {
+  return (
+    <img
+      src={`/icons/services/${slug}.svg`}
+      width={size}
+      height={size}
+      alt=""
+      aria-hidden
+      draggable={false}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      className={`block shrink-0 select-none object-contain ${className}`}
+      style={{ width: size, height: size, ...style }}
+    />
+  );
+}
