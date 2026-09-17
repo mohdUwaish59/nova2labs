@@ -13,6 +13,7 @@ import { PageShell } from "@/components/PageShell";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { SERVICES } from "@/lib/services-data";
 import { seo } from "@/lib/site";
+import { ServicesNavCard } from "@/components/ServicesNavCard";
 
 export const Route = createFileRoute("/services")({
   head: () =>
@@ -128,102 +129,113 @@ function Services() {
         </div>
       </section>
 
-      {/* SERVICE ROWS */}
-      <section className="border-y border-border">
-        {SERVICES.map((s, i) => (
-          <motion.article
-            key={s.slug}
-            id={s.slug}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease }}
-            className={`scroll-mt-16 border-b border-border py-16 last:border-b-0 md:py-20 ${i % 2 === 1 ? "bg-surface/40" : ""}`}
-          >
-            <div className="mx-auto max-w-7xl px-6">
-              <div
-                className={`grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16 ${i % 2 === 1 ? "lg:grid-cols-[1fr_auto]" : ""}`}
-              >
-                <div className={`flex justify-start ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <div className="icon-stage h-[200px] w-[200px]">
-                    <ServiceIcon slug={s.slug} size={168} eager={i < 2} />
-                  </div>
-                </div>
-
-                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-mono text-xs text-muted-foreground/60">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-                      {s.title}
-                    </h2>
-                    {s.startingAt && <span className="badge-primary">From {s.startingAt}</span>}
-                  </div>
-
-                  <p className="mt-3 text-lg font-medium text-primary">{s.tagline}</p>
-                  <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{s.body}</p>
-
-                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
-                    <div>
-                      <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                        What's included
-                      </h3>
-                      <ul className="space-y-2">
-                        {s.points.map((p) => (
-                          <li
-                            key={p}
-                            className="flex items-start gap-2.5 text-sm text-foreground/90"
-                          >
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                            {p}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                        Typical outcome
-                      </h3>
-                      <ul className="space-y-2">
-                        {s.outcomes.slice(0, 3).map((o) => (
-                          <li
-                            key={o}
-                            className="flex items-start gap-2.5 text-sm text-muted-foreground"
-                          >
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                            {o}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 flex flex-wrap items-center gap-3">
-                    <Link
-                      to="/services/$slug"
-                      params={{ slug: s.slug }}
-                      className="group inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition-all hover:border-primary/50"
-                    >
-                      Full breakdown
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                    <Link
-                      to="/contact"
-                      search={{ service: s.slug }}
-                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
-                    >
-                      Get a quote
-                    </Link>
-                    <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
-                      {s.stack.slice(0, 4).join(" · ")}
-                    </span>
-                  </div>
-                </div>
+      {/* SERVICE ROWS — with a sticky index card alongside */}
+      <section className="border-y border-border py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-10 lg:grid-cols-[240px_1fr] lg:gap-14">
+            {/* Sticky index — click a service to jump straight to it */}
+            <aside className="hidden lg:block">
+              <div className="sticky top-24">
+                <ServicesNavCard mode="anchor" />
               </div>
+            </aside>
+
+            <div className="space-y-6">
+              {SERVICES.map((s, i) => (
+                <motion.article
+                  key={s.slug}
+                  id={s.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, ease }}
+                  className="scroll-mt-24 overflow-hidden rounded-3xl border border-border bg-surface"
+                >
+                  <div className="h-1 w-full bg-gradient-primary opacity-60" />
+                  <div className="p-7 md:p-9">
+                    <div className="flex flex-col gap-7 sm:flex-row sm:items-start">
+                      <div className="icon-stage h-[132px] w-[132px] shrink-0 md:h-[152px] md:w-[152px]">
+                        <ServiceIcon slug={s.slug} size={124} eager={i < 2} />
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <span className="font-mono text-xs text-muted-foreground/60">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                            {s.title}
+                          </h2>
+                          {s.startingAt && (
+                            <span className="badge-primary">From {s.startingAt}</span>
+                          )}
+                        </div>
+                        <p className="mt-2.5 font-medium text-primary">{s.tagline}</p>
+                        <p className="mt-3 leading-relaxed text-muted-foreground">{s.body}</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-7 grid gap-7 border-t border-border pt-7 sm:grid-cols-2">
+                      <div>
+                        <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                          What's included
+                        </h3>
+                        <ul className="space-y-2">
+                          {s.points.map((p) => (
+                            <li
+                              key={p}
+                              className="flex items-start gap-2.5 text-sm text-foreground/90"
+                            >
+                              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                              {p}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                          Typical outcome
+                        </h3>
+                        <ul className="space-y-2">
+                          {s.outcomes.slice(0, 3).map((o) => (
+                            <li
+                              key={o}
+                              className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                            >
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                              {o}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <Link
+                        to="/services/$slug"
+                        params={{ slug: s.slug }}
+                        className="group inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition-all hover:border-primary/50"
+                      >
+                        Full breakdown
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                      <Link
+                        to="/contact"
+                        search={{ service: s.slug }}
+                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
+                      >
+                        Get a quote
+                      </Link>
+                      <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+                        {s.stack.slice(0, 4).join(" \u00b7 ")}
+                      </span>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
             </div>
-          </motion.article>
-        ))}
+          </div>
+        </div>
       </section>
 
       {/* PRICING */}

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { ServiceIcon } from "@/components/ServiceIcons";
+import { ServicesNavCard } from "@/components/ServicesNavCard";
 import type { ServiceDetail } from "@/lib/services-data";
 import { getNextService } from "@/lib/services-data";
 import { workForService } from "@/lib/work-data";
@@ -63,7 +64,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
       <section className="border-t border-border py-20">
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-12 md:grid-cols-[1fr_1.5fr]">
-            <div className="md:sticky md:top-32 md:self-start">
+            <div className="md:sticky md:top-24 md:self-start">
               <span className="badge-primary mb-4 inline-flex">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 Deliverables
@@ -74,6 +75,13 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
               <p className="mt-3 text-sm text-muted-foreground">
                 Every item shipped, tested, and documented before handover.
               </p>
+
+              {/* Jump to any other service without going back */}
+              <ServicesNavCard
+                mode="link"
+                current={service.slug}
+                className="mt-8 hidden md:block"
+              />
             </div>
             <ul className="space-y-3">
               {service.deliverables.map((d, i) => (
