@@ -6,7 +6,7 @@
  */
 
 /** Absolute site origin, no trailing slash. Override per environment with VITE_SITE_URL. */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://nova2labs.com").replace(
+export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? "https://www.nova2labs.com").replace(
   /\/+$/,
   "",
 );
