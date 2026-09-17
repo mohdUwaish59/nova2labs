@@ -22,7 +22,7 @@ export const Route = createFileRoute("/services")({
     seo({
       title: "Services — AI, Software, DevOps & Infrastructure | nova2labs",
       description:
-        "Seven engineering services delivered end-to-end: AI agents, LLM & NLP, full-stack engineering, DevOps & DevSecOps, networking, IT infrastructure and brand & product design — every engagement fixed-scope and fixed-price.",
+        "Seven engineering services delivered end-to-end: AI agents, LLM & NLP, full-stack engineering, DevOps & DevSecOps, networking, IT infrastructure and brand & product design. Every engagement fixed-scope and fixed-price.",
       path: "/services",
     }),
   component: Services,
@@ -34,7 +34,7 @@ const guarantees = [
   {
     icon: Zap,
     title: "Working prototype in week 1",
-    body: "Not after months of planning — you see real software immediately.",
+    body: "Not after months of planning. You see real software immediately.",
   },
   {
     icon: CheckCircle2,
@@ -59,7 +59,7 @@ const guarantees = [
   {
     icon: Sparkles,
     title: "100% IP ownership at handover",
-    body: "Source code, docs and infrastructure — fully yours.",
+    body: "Source code, docs and infrastructure, fully yours.",
   },
 ];
 
@@ -107,13 +107,13 @@ function Services() {
               Services
             </div>
             <h1 className="max-w-4xl font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
-              Seven services.
+              Seven services,
               <br />
-              <span className="text-gradient">One senior team.</span>
+              <span className="text-gradient">one senior team</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Pick the piece you need or hand us the whole stack. Every engagement is fixed-scope,
-              fixed-price and led by the engineers who do the work.
+              Take one service or hand over the whole stack. Every engagement is scoped and priced
+              up front, and the engineers who scope it are the ones who build it.
             </p>
 
             <nav className="mt-10 flex flex-wrap gap-2" aria-label="Jump to a service">
@@ -131,11 +131,11 @@ function Services() {
         </div>
       </section>
 
-      {/* SERVICE ROWS — with a sticky index card alongside */}
+      {/* SERVICE ROWS with a sticky index card alongside */}
       <section className="border-y border-border py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-10 lg:grid-cols-[240px_1fr] lg:gap-14">
-            {/* Sticky index — click a service to jump straight to it */}
+            {/* Sticky index: click a service to jump straight to it */}
             <aside className="hidden lg:block">
               <div className="sticky top-24">
                 <ServicesNavCard mode="anchor" />
@@ -183,7 +183,7 @@ function Services() {
 
                     <div className="mt-7 grid gap-7 border-t border-border pt-7 sm:grid-cols-2">
                       <div>
-                        <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                        <h3 className="mb-3 text-xs font-medium text-muted-foreground">
                           What's included
                         </h3>
                         <ul className="space-y-2">
@@ -199,7 +199,7 @@ function Services() {
                         </ul>
                       </div>
                       <div>
-                        <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                        <h3 className="mb-3 text-xs font-medium text-muted-foreground">
                           Typical outcome
                         </h3>
                         <ul className="space-y-2">
@@ -253,7 +253,7 @@ function Services() {
               Pricing
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Transparent, <span className="text-gradient">scope-based pricing.</span>
+              How pricing works
             </h2>
             <p className="mt-4 text-muted-foreground">
               No hourly billing surprises. You approve a fixed price before we write a single line
@@ -272,9 +272,7 @@ function Services() {
                 className="card-lift flex flex-col rounded-2xl border border-border bg-surface p-7"
               >
                 <div className="font-display text-xl font-bold text-foreground">{t.range}</div>
-                <div className="mt-2 font-mono text-[11px] uppercase tracking-widest text-primary">
-                  {t.label}
-                </div>
+                <div className="mt-2 text-xs font-medium text-primary">{t.label}</div>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {t.detail}
                 </p>
@@ -306,7 +304,7 @@ function Services() {
               Our guarantees
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Included in <span className="text-gradient">every engagement.</span>
+              Included in every engagement
             </h2>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -350,8 +348,7 @@ function Services() {
               <span className="text-gradient">to start?</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-lg text-muted-foreground">
-              Send us a two-line brief. We'll reply with the path we'd take, an honest estimate, and
-              no pressure whatsoever.
+              Send a two-line brief. You get the approach we would take and an honest estimate.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link

@@ -57,7 +57,7 @@ export function Footer() {
         <div className="absolute inset-0 grid-bg opacity-15" aria-hidden />
         <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-14 text-center md:flex-row md:text-left">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary-foreground/70 mb-2">
+            <p className="mb-2 text-sm font-medium text-primary-foreground/80">
               Ready to ship something great?
             </p>
             <h3 className="font-display text-2xl font-bold text-primary-foreground md:text-3xl">
@@ -120,9 +120,7 @@ export function Footer() {
 
             {/* Company links */}
             <div className="md:col-span-2">
-              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
-                Company
-              </h4>
+              <h4 className="text-xs font-semibold text-foreground mb-5">Company</h4>
               <ul className="space-y-3.5 text-sm">
                 {[
                   { to: "/", label: "Home" },
@@ -145,9 +143,7 @@ export function Footer() {
 
             {/* Services */}
             <div className="md:col-span-2">
-              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
-                Services
-              </h4>
+              <h4 className="text-xs font-semibold text-foreground mb-5">Services</h4>
               <ul className="space-y-3.5 text-sm">
                 {serviceLinks.map(({ label, slug }) => (
                   <li key={slug}>
@@ -165,9 +161,7 @@ export function Footer() {
 
             {/* Contact */}
             <div className="md:col-span-2">
-              <h4 className="font-mono text-[11px] font-semibold uppercase tracking-widest text-foreground mb-5">
-                Contact
-              </h4>
+              <h4 className="text-xs font-semibold text-foreground mb-5">Contact</h4>
               <ul className="space-y-4">
                 <li>
                   <a

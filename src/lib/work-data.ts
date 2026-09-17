@@ -1,5 +1,5 @@
 /**
- * Portfolio — real systems the nova2labs team has designed, built and run.
+ * Portfolio: real systems the nova2labs team has designed, built and run.
  *
  * Every entry is a system this team designed, built and ran. Nothing here is
  * invented, and numbers only appear where they came from the project itself.
@@ -25,7 +25,7 @@ export type WorkItem = {
   /** Maps the project back to the service that sells it. */
   service: ServiceSlug;
   year: string;
-  /** Headline figure — only ever a real one from the project. */
+  /** Headline figure: only ever a real one from the project. */
   metric?: { value: string; label: string };
   /** Shown as a small chip: how the work came about. */
   context: "Client work" | "Research" | "Open source" | "Production system" | "Product";
@@ -48,7 +48,7 @@ export const WORK: WorkItem[] = [
     metric: { value: "−60%", label: "IT ticket volume" },
     context: "Production system",
     problem:
-      "A support desk was drowning in repeat questions — password resets, VPN setup, printer mapping — that were all already documented somewhere nobody could find.",
+      "A support desk was drowning in repeat questions: password resets, VPN setup, printer mapping. All of it was documented somewhere nobody could find.",
     built: [
       "Retrieval-augmented backend on FastAPI: documents chunked, embedded with Sentence-Transformers and searched through a FAISS vector index",
       "Answer generation grounded strictly in retrieved passages, so the bot cites internal docs rather than inventing steps",
@@ -71,14 +71,14 @@ export const WORK: WorkItem[] = [
     slug: "n8n-agent-workflows",
     title: "Production AI agent workflows",
     summary:
-      "Four business agents where the LLM does the reading and deterministic code does the checking — invoices, leads, content and support.",
+      "Four business agents where the LLM does the reading and deterministic code does the checking: invoices, leads, content and support.",
     category: "AI Agents",
     service: "ai-agents",
     year: "2026",
     metric: { value: "4", label: "agents in production patterns" },
     context: "Open source",
     problem:
-      "Most 'AI automation' breaks the moment a number is wrong or a document is scanned sideways — because nothing verifies what the model produced.",
+      "Most 'AI automation' breaks the moment a number is wrong or a document is scanned sideways, because nothing verifies what the model produced.",
     built: [
       "Invoice & document extraction agent: LLM extracts fields, code re-checks the arithmetic, OCR handles scans, and anything that fails validation goes to a human review queue with the exact reason",
       "Lead qualifier: enriches inbound leads from their website, scores them against an ideal-customer profile with written reasoning, and refuses to fake personalisation when it has nothing specific to say",
@@ -99,7 +99,7 @@ export const WORK: WorkItem[] = [
     metric: { value: "4", label: "query classes routed separately" },
     context: "Research",
     problem:
-      "Plain vector RAG answers 'what is X' well and fails at 'why does X relate to Y' — scientific literature is full of the second kind of question.",
+      "Plain vector RAG answers 'what is X' well and fails at 'why does X relate to Y'. Scientific literature is full of the second kind of question.",
     built: [
       "Query classifier that sorts questions into explicit facts, implicit reasoning, hidden rationale and interpretable rationale",
       "VectorRAG path using dense embeddings for semantic similarity retrieval",
@@ -121,7 +121,7 @@ export const WORK: WorkItem[] = [
     metric: { value: "14", label: "attack techniques benchmarked" },
     context: "Research",
     problem:
-      "Before you put an agent in front of customers, you need to know what it does under adversarial pressure — not hope for the best.",
+      "Before you put an agent in front of customers, you need to know what it does under adversarial pressure, not hope for the best.",
     built: [
       "Persuader and Persuadee agents driven by LangGraph, with stateful multi-turn conversations and conditional routing",
       "Fourteen jailbreak techniques across four strategy families, run in both single-turn and multi-turn modes",
@@ -211,7 +211,7 @@ export const WORK: WorkItem[] = [
     metric: { value: "40+", label: "complexity measures" },
     context: "Open source",
     problem:
-      "Existing imbalanced-learning tools hand you a dozen resamplers and no way to tell which one suits your data — so teams guess and ship a weaker model.",
+      "Existing imbalanced-learning tools hand you a dozen resamplers and no way to tell which one suits your data. So teams guess and ship a weaker model.",
     built: [
       "Fourteen-plus resampling techniques including overlap-based undersampling, hybrid and clustering-based methods",
       "Over forty dataset complexity measures across feature overlap, instance overlap, structural and multiresolution families",
@@ -279,7 +279,7 @@ export const WORK: WorkItem[] = [
     problem:
       "Growing companies hit a wall where laptops are set up by hand, identity lives in three places, and nobody can prove a device is patched.",
     built: [
-      "Zero-touch provisioning through Microsoft Intune, Autopilot, SCCM, Jamf Pro and Apple Business Manager — device setup cut from around three hours to twenty-five minutes",
+      "Zero-touch provisioning through Microsoft Intune, Autopilot, SCCM, Jamf Pro and Apple Business Manager. Device setup fell from around three hours to twenty-five minutes",
       "Hybrid identity on Active Directory and Entra ID with Group Policy, Exchange and MFA/SSO, dropping account provisioning from two hours to twenty minutes",
       "Zero-Trust security posture using CrowdStrike, Okta MFA/SSO, Splunk Enterprise Security and Palo Alto Prisma, with incident response down from four hours to forty-five minutes",
       "Azure Virtual Desktop delivered to 180+ remote staff across a dozen locations, with deployment time reduced from six hours to ninety minutes",
@@ -332,7 +332,7 @@ export const WORK: WorkItem[] = [
     slug: "pfsense-security-lab",
     title: "Firewall, VPN & IDS build-out",
     summary:
-      "A segmented network with firewall policy, remote-access VPN and intrusion detection — built, attacked and documented.",
+      "A segmented network with firewall policy, remote-access VPN and intrusion detection: built, attacked and documented.",
     category: "Networking & Security",
     service: "networking",
     year: "2025",
@@ -362,7 +362,7 @@ export const WORK: WorkItem[] = [
     built: [
       "Visual identity and page system designed for a services buyer: what you do, who it's for, and how to start",
       "Next.js 14 site with the App Router, component library and responsive layouts",
-      "Continuous deployment on Vercel — every push to main ships production, every pull request gets a preview",
+      "Continuous deployment on Vercel. Every push to main ships production, every pull request gets a preview",
       "Custom domain, performance defaults and structured content ready for future pages",
     ],
     stack: ["Next.js 14", "React", "Tailwind CSS", "Vercel"],

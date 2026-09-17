@@ -21,9 +21,9 @@ export const PRACTICES: Practice[] = [
     id: "ai-product",
     title: "AI Systems & Product Engineering",
     focus:
-      "Builds the AI systems and the products around them — retrieval, agents, evaluation, interface.",
+      "Builds the AI systems and the products around them: retrieval, agents, evaluation and interface.",
     summary:
-      "Retrieval-augmented systems, multi-agent orchestration and LLM safety evaluation, delivered end to end: data pipeline, model layer, typed API and the interface a real user touches — plus the evaluation harness that proves it works before launch.",
+      "Retrieval-augmented systems, multi-agent orchestration and LLM safety evaluation, delivered end to end: data pipeline, model layer, typed API and the interface a real user touches, plus the evaluation harness that proves it works before launch.",
     owns: [
       "Agent architecture, tool-use and guardrails",
       "Retrieval pipelines and vector/graph search",
@@ -53,9 +53,9 @@ export const PRACTICES: Practice[] = [
     id: "infrastructure",
     title: "Infrastructure, Security & Operations",
     focus:
-      "Keeps production running — identity, endpoints, networks and the automation around them.",
+      "Keeps production running: identity, endpoints, networks and the automation around them.",
     summary:
-      "Six years of production IT behind this practice: endpoint estates in the hundreds, hybrid identity, Zero-Trust security posture and the automation that replaces manual IT work — zero-touch provisioning, self-service portals and monitoring that catches problems before a ticket is filed.",
+      "Six years of production IT behind this practice: endpoint estates in the hundreds, hybrid identity, Zero-Trust security posture and the automation that replaces manual IT work, zero-touch provisioning, self-service portals and monitoring that catches problems before a ticket is filed.",
     owns: [
       "Identity, endpoint management and Zero-Trust rollout",
       "Networks, firewalls, VPN and segmentation",
@@ -83,7 +83,7 @@ export const PRACTICES: Practice[] = [
   },
 ];
 
-/** Certifications held within the team — no personal attribution. */
+/** Certifications held within the team, with no personal attribution. */
 export const CERTIFICATIONS = [
   "ITIL Foundation — IT Service Management",
   "Google — IT Infrastructure Services",

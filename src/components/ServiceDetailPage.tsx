@@ -25,7 +25,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-28 md:pt-36">
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3 w-3" /> All services
           </Link>
@@ -231,7 +231,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                 >
                   <Link to="/work/$slug" params={{ slug: w.slug }} className="flex flex-1 flex-col">
                     <div className="mb-4 flex items-start justify-between gap-3">
-                      <span className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                      <span className="rounded-full border border-border bg-surface px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
                         {w.context}
                       </span>
                       {w.metric && (
@@ -315,7 +315,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
           <div className="mt-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3 w-3" /> All services
             </Link>
@@ -324,9 +324,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
               params={{ slug: next.slug }}
               className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground"
             >
-              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                Next
-              </span>
+              <span className="text-xs font-medium text-muted-foreground">Next</span>
               {next.title}
               <ArrowRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
             </Link>

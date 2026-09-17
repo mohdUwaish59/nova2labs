@@ -17,8 +17,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "ai-agents",
     title: "AI Agents",
-    tagline: "Autonomous systems that act, not just answer.",
-    body: "Autonomous and assistive agents with tool-use, memory, evaluation and guardrails. From scoped copilots to multi-agent workflows wired into your real systems.",
+    tagline: "Agents that complete work, not just reply to it.",
+    body: "Agents with tool-use, memory, evaluation and guardrails, wired into the systems you already run. We start with one scoped workflow and extend from there.",
     points: ["Tool-use & function calling", "RAG + memory architectures", "Evaluation harnesses"],
     deliverables: [
       "Agent architecture design document with task graph and tool contracts",
@@ -47,8 +47,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "llm-nlp",
     title: "LLM & NLP",
-    tagline: "From raw text to reliable, structured signal.",
-    body: "Production LLM systems — model selection, fine-tuning, prompt engineering, classical NLP pipelines and structured extraction that holds up under load.",
+    tagline: "Turn documents and text into structured data.",
+    body: "Model selection, fine-tuning, retrieval and classical NLP pipelines. Outputs are schema-validated and measured against a golden set, so accuracy is a number you can check.",
     points: ["Fine-tuning & adapters", "Retrieval pipelines", "Classification & NER"],
     deliverables: [
       "Model selection report with cost, latency and quality benchmarks",
@@ -62,7 +62,7 @@ export const SERVICES: ServiceDetail[] = [
       { step: "Baseline", detail: "Start with the simplest model that could work; measure." },
       {
         step: "Optimize",
-        detail: "Iterate on retrieval, prompts, fine-tunes — only where it moves the metric.",
+        detail: "Iterate on retrieval, prompts and fine-tunes, but only where it moves the metric.",
       },
       {
         step: "Ship",
@@ -80,8 +80,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "full-stack",
     title: "Full-Stack Engineering",
-    tagline: "Modern web products, shipped end-to-end.",
-    body: "Typed APIs, clean data layers, accessible UI and a delivery pipeline that scales with the team. From greenfield products to rescuing stalled codebases.",
+    tagline: "Web products built to be maintained.",
+    body: "Typed APIs, a clean data layer, accessible interfaces and a delivery pipeline your team can run. We build new products and take over stalled codebases.",
     points: ["React / Next / TanStack", "Node, Python, Go services", "Postgres, Redis, queues"],
     deliverables: [
       "Architecture document covering data model, APIs and deployment topology",
@@ -110,8 +110,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "devops",
     title: "DevOps & DevSecOps",
-    tagline: "Pipelines and platforms your team can actually operate.",
-    body: "CI/CD, infrastructure as code and Kubernetes — with security woven into the pipeline. Cost-aware, observable, reproducible and hardened by default.",
+    tagline: "Delivery pipelines your team can operate.",
+    body: "CI/CD, infrastructure as code and Kubernetes with security checks inside the pipeline. Reproducible environments, observability and cost controls come as standard.",
     points: ["Terraform / Pulumi", "Kubernetes & GitOps", "SAST/DAST, SBOM, policy-as-code"],
     deliverables: [
       "Infrastructure as code covering networks, clusters, data and secrets",
@@ -140,8 +140,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "networking",
     title: "Networking",
-    tagline: "Networks designed to stay up under real load.",
-    body: "Designing and operating networks that stay up. From SD-WAN and segmentation to VPN, routing and edge connectivity for distributed teams and sites.",
+    tagline: "Networks that hold up under real load.",
+    body: "Routing, switching, segmentation and remote access for distributed teams and multiple sites, documented so your own staff can run it.",
     points: ["Routing & switching", "VPN / SD-WAN", "Segmentation & ACLs"],
     deliverables: [
       "Network architecture and addressing plan with growth headroom",
@@ -167,8 +167,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "it-infrastructure",
     title: "IT Infrastructure",
-    tagline: "Foundations that scale from 10 to 1,000 people.",
-    body: "Foundational IT — directory, identity, endpoint management, virtualization and disaster recovery designed for organizations that need to grow without breaking.",
+    tagline: "Identity, devices and recovery, properly set up.",
+    body: "Directory and identity, endpoint management, virtualisation and disaster recovery. One source of truth for accounts and devices, with recovery that has actually been tested.",
     points: ["Identity & SSO", "Virtualization", "Backup & DR"],
     deliverables: [
       "Identity and SSO rollout (Entra ID / Google Workspace / Okta)",
@@ -186,7 +186,7 @@ export const SERVICES: ServiceDetail[] = [
     stack: ["Entra ID", "Active Directory", "Proxmox", "VMware", "Veeam", "Intune"],
     outcomes: [
       "One identity, one device policy, one source of truth",
-      "Tested recovery — not just backups",
+      "Tested recovery, not just backups",
       "Clean joiner / mover / leaver workflows",
     ],
     lead: "nova2labs",
@@ -194,8 +194,8 @@ export const SERVICES: ServiceDetail[] = [
   {
     slug: "graphic-design",
     title: "Brand & Product Design",
-    tagline: "A brand that looks like it belongs in the big league.",
-    body: "Logo and identity systems, product UI, decks and marketing assets — designed as one coherent system with real design tokens, so everything your customers see feels like the same company.",
+    tagline: "One visual system across everything you ship.",
+    body: "Logo and identity, product interfaces, decks and marketing assets, built on shared design tokens so the site, the product and the pitch all look like one company.",
     points: [
       "Logo & identity systems",
       "Product UI & design systems",
@@ -215,7 +215,7 @@ export const SERVICES: ServiceDetail[] = [
       },
       {
         step: "Direction",
-        detail: "Two or three distinct visual routes — you pick one before any polish begins.",
+        detail: "Two or three distinct visual routes. You pick one before any polish begins.",
       },
       {
         step: "Build",
@@ -223,7 +223,7 @@ export const SERVICES: ServiceDetail[] = [
       },
       {
         step: "Handover",
-        detail: "Editable source files, exports and guidelines — no licence traps, all yours.",
+        detail: "Editable source files, exports and guidelines. No licence traps, all yours.",
       },
     ],
     stack: ["Figma", "Illustrator", "Inkscape", "Tailwind tokens", "SVG", "Framer Motion"],

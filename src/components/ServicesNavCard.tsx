@@ -33,9 +33,7 @@ export function ServicesNavCard({
       aria-label="All services"
       className={`rounded-2xl border border-border bg-surface p-4 ${className}`}
     >
-      <p className="mb-3 px-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-        All services
-      </p>
+      <p className="mb-3 px-2 text-xs font-medium text-muted-foreground">All services</p>
 
       <ul className="space-y-0.5">
         {SERVICES.map((s) => {

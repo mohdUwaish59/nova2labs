@@ -55,14 +55,14 @@ function Work() {
               Selected work
             </div>
             <h1 className="max-w-4xl font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
-              Systems we've actually
+              Systems we have
               <br />
-              <span className="text-gradient">shipped and run.</span>
+              <span className="text-gradient">shipped and run</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Not mockups. Retrieval systems in production, agent workflows that validate their own
-              output, networks under real load and endpoint estates in the hundreds. Code
-              walkthroughs and demos are available on request during scoping.
+              Retrieval systems in production, agent workflows that validate their own output,
+              networks under real load and endpoint estates in the hundreds. Code walkthroughs are
+              available on request during scoping.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
@@ -73,9 +73,7 @@ function Work() {
               ].map((s) => (
                 <div key={s.l}>
                   <span className="stat-number text-2xl font-bold text-foreground">{s.v}</span>
-                  <span className="ml-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                    {s.l}
-                  </span>
+                  <span className="ml-2 text-xs font-medium text-muted-foreground">{s.l}</span>
                 </div>
               ))}
             </div>
@@ -122,7 +120,7 @@ function Work() {
                   to="/work/$slug"
                   params={{ slug: w.slug }}
                   className="flex flex-1 flex-col"
-                  aria-label={`${w.title} — read the breakdown`}
+                  aria-label={`${w.title}, read the breakdown`}
                 >
                   <Photo
                     photo={workPhoto(w.slug, w.category)}
@@ -137,7 +135,7 @@ function Work() {
                         <ServiceIcon slug={w.service} size={52} className="icon-float" />
                       </div>
                       <div className="flex flex-col items-end gap-1.5">
-                        <span className="rounded-full bg-background/75 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-foreground backdrop-blur-sm">
+                        <span className="rounded-full bg-background/75 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
                           {w.context}
                         </span>
                         <span className="rounded-full bg-background/75 px-2 py-0.5 font-mono text-[10px] text-muted-foreground backdrop-blur-sm">
@@ -186,11 +184,11 @@ function Work() {
                   <Link
                     to="/work/$slug"
                     params={{ slug: w.slug }}
-                    className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-primary"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary"
                   >
                     Read the breakdown <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/60">
+                  <span className="text-[11px] font-medium text-muted-foreground/60">
                     {w.category}
                   </span>
                 </div>
@@ -206,13 +204,13 @@ function Work() {
         <div className="absolute inset-0 grid-bg opacity-20" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Want one of these
+            Want something like this
             <br />
             <span className="text-gradient">built for you?</span>
           </h2>
           <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Tell us the problem in two lines. You'll get a plan, a fixed price and the engineer who
-            would lead it — within 24 hours.
+            Describe the problem in two lines. You get a plan, a fixed price and the engineer who
+            would lead it, within 24 hours.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link

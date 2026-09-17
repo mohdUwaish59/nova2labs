@@ -25,7 +25,7 @@ export const Route = createFileRoute("/about")({
     seo({
       title: "About nova2labs — Senior-Led Engineering Studio",
       description:
-        "How nova2labs works: senior-led delivery, fixed-price scopes, proven technology and full IP handover — for businesses that need engineering done right the first time.",
+        "How nova2labs works: senior-led delivery, fixed-price scopes, proven technology and full IP handover, for businesses that need engineering done right the first time.",
       path: "/about",
     }),
   component: About,
@@ -49,7 +49,7 @@ const values = [
   {
     icon: ShieldCheck,
     title: "Security is culture",
-    body: "Threat modeling, zero-trust defaults, and DevSecOps practices aren't extras — they're in every project from line one.",
+    body: "Threat modeling, zero-trust defaults, and DevSecOps practices aren't extras, they're in every project from line one.",
   },
   {
     icon: BrainCircuit,
@@ -64,12 +64,12 @@ const values = [
   {
     icon: Rocket,
     title: "Bias toward shipping",
-    body: "We move fast without breaking things. Working software in the first week — not after months of planning documents.",
+    body: "We move fast without breaking things. Working software in the first week, not after months of planning documents.",
   },
   {
     icon: Globe2,
     title: "Global perspective",
-    body: "We work async-first across time zones, with overlap hours agreed upfront — distance has never been the hard part of shipping software.",
+    body: "We work async-first across time zones, with overlap hours agreed upfront, distance has never been the hard part of shipping software.",
   },
 ];
 
@@ -84,7 +84,7 @@ const engagement = [
   {
     label: "Week 1",
     title: "Foundations & first working slice",
-    body: "Repo, environments and CI set up, then the thinnest end-to-end slice of real functionality — something you can click, not a slide.",
+    body: "Repo, environments and CI set up, then the thinnest end-to-end slice of real functionality, something you can click, not a slide.",
   },
   {
     label: "Weekly",
@@ -94,7 +94,7 @@ const engagement = [
   {
     label: "Hardening",
     title: "Tests, security & observability",
-    body: "Evals or test coverage where it counts, dependency and security scanning, logging and dashboards — before anything touches production.",
+    body: "Evals or test coverage where it counts, dependency and security scanning, logging and dashboards, before anything touches production.",
   },
   {
     label: "Launch",
@@ -131,12 +131,12 @@ function About() {
             <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
               Engineering you can
               <br />
-              <span className="text-gradient">actually trust.</span>
+              <span className="text-gradient">rely on</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              nova2labs is a senior-led engineering studio. We exist for one reason: to take hard
-              engineering problems — AI systems, software platforms, cloud and network
-              infrastructure — and deliver them production-ready, documented and fully yours.
+              nova2labs is a senior-led engineering studio. We take on AI systems, software
+              platforms and cloud infrastructure, and deliver them production-ready, documented and
+              fully owned by you.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
@@ -173,9 +173,7 @@ function About() {
                 <span className="stat-number text-4xl font-bold text-foreground md:text-5xl">
                   {s.value}
                 </span>
-                <span className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                  {s.label}
-                </span>
+                <span className="mt-2 text-xs font-medium text-muted-foreground">{s.label}</span>
               </motion.div>
             ))}
           </div>
@@ -192,18 +190,18 @@ function About() {
                 Our mission
               </div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                World-class engineering
+                Serious engineering,
                 <br />
-                <span className="text-gradient">for every business.</span>
+                <span className="text-gradient">without the overhead</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Serious engineering used to be reserved for companies with 100-person teams and
-                eight-figure budgets. It doesn't have to be.
+                Engineering of this standard used to require a hundred-person department. It no
+                longer does.
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 nova2labs brings the same engineering standards used inside large technology
-                organisations — typed contracts, tested code, infrastructure as code, security in
-                the pipeline — to teams that need results without a 100-person department.
+                organisations, typed contracts, tested code, infrastructure as code, security in the
+                pipeline, to teams that need results without a 100-person department.
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 We're deliberately small and senior: the people who scope your project are the
@@ -224,7 +222,7 @@ function About() {
                   {
                     icon: Target,
                     title: "Outcome-focused",
-                    body: "We measure success by the impact on your business — not lines of code or hours logged.",
+                    body: "We measure success by the impact on your business, not lines of code or hours logged.",
                   },
                   {
                     icon: Zap,
@@ -281,7 +279,7 @@ function About() {
             </h2>
             <p className="mt-4 text-muted-foreground">
               Deliberately small and senior. One practice builds the AI systems and products, the
-              other runs the infrastructure and security underneath them — and they ship together.
+              other runs the infrastructure and security underneath them, and they ship together.
             </p>
           </div>
 
@@ -301,7 +299,7 @@ function About() {
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{pr.summary}</p>
 
                   <div className="mt-7">
-                    <h4 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    <h4 className="mb-3 text-xs font-medium text-muted-foreground">
                       Owns in an engagement
                     </h4>
                     <ul className="space-y-2">
@@ -315,9 +313,7 @@ function About() {
                   </div>
 
                   <div className="mt-7 flex-1">
-                    <h4 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                      Works with
-                    </h4>
+                    <h4 className="mb-3 text-xs font-medium text-muted-foreground">Works with</h4>
                     <div className="flex flex-wrap gap-1.5">
                       {pr.skills.map((sk) => (
                         <span
@@ -410,11 +406,10 @@ function About() {
               Technology
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Boring tools. <span className="text-gradient">Brilliant results.</span>
+              The tools we work with
             </h2>
             <p className="mt-4 text-muted-foreground">
-              We pick proven, well-documented technology your team can hire for and maintain — never
-              whatever is trending this month.
+              We choose proven, well-documented technology your team can hire for and maintain.
             </p>
           </div>
 
@@ -455,9 +450,9 @@ function About() {
                 How we work
               </div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                No black box.
+                How an engagement
                 <br />
-                <span className="text-gradient">You see every step.</span>
+                <span className="text-gradient">actually runs</span>
               </h2>
               <p className="mt-5 leading-relaxed text-muted-foreground">
                 This is exactly how an engagement runs, from the first call to the day the code is
@@ -494,9 +489,7 @@ function About() {
                       <span className="font-mono text-[10px] font-bold text-primary">{i + 1}</span>
                     </div>
                     <div className="flex-1 rounded-2xl border border-border bg-surface px-6 py-5">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
-                        {m.label}
-                      </span>
+                      <span className="text-[11px] font-medium text-primary">{m.label}</span>
                       <h3 className="mt-1 font-display text-base font-semibold">{m.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.body}</p>
                     </div>
@@ -522,13 +515,10 @@ function About() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-display text-5xl font-bold tracking-tight md:text-6xl">
-              Ready to work
-              <br />
-              <span className="text-gradient">with the best?</span>
+              Ready to start?
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-lg text-muted-foreground">
-              Tell us what you're building. We'll tell you exactly how we'd approach it — no
-              commitment, no fluff.
+              Tell us what you are building and we will tell you how we would approach it.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link

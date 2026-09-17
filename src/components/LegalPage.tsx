@@ -28,9 +28,7 @@ export function LegalPage({
           </div>
           <h1 className="font-display text-4xl font-bold tracking-tight md:text-5xl">{title}</h1>
           <p className="mt-5 leading-relaxed text-muted-foreground">{intro}</p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-muted-foreground/70">
-            Last updated {updated}
-          </p>
+          <p className="mt-4 text-sm text-muted-foreground/80">Last updated {updated}</p>
         </div>
       </section>
 

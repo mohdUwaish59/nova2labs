@@ -24,7 +24,7 @@ export const Route = createFileRoute("/contact")({
     seo({
       title: "Contact nova2labs — Free Project Plan in 24 Hours",
       description:
-        "Send a short brief and get a clear plan, an honest fixed-price estimate and the engineer who would lead the work — within 24 hours, free and with no obligation.",
+        "Send a short brief and get a clear plan, an honest fixed-price estimate and the engineer who would lead the work, within 24 hours, free and with no obligation.",
       path: "/contact",
     }),
   validateSearch: (search: Record<string, unknown>): { service?: ServiceSlug } => {
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const NOT_SURE = "Not sure yet — help me choose";
+const NOT_SURE = "Not sure yet";
 const topics = [...SERVICES.map((s) => s.title), "Consulting & Strategy", NOT_SURE];
 
 type State = "idle" | "sending" | "success" | "error";
@@ -59,8 +59,8 @@ function Contact() {
     const result = await submitLead(formData, {
       source: `contact page${service ? ` · ${service}` : ""}`,
       subject: topic
-        ? `New project enquiry — ${topic} (nova2labs.com)`
-        : "New project enquiry — nova2labs.com",
+        ? `New project enquiry: ${topic} (nova2labs.com)`
+        : "New project enquiry from nova2labs.com",
     });
 
     if (result.ok) {
@@ -73,8 +73,8 @@ function Contact() {
       setFallbackHref(
         buildMailto(formData, {
           subject: topic
-            ? `Project enquiry — ${topic} (nova2labs.com)`
-            : "Project enquiry — nova2labs.com",
+            ? `Project enquiry: ${topic} (nova2labs.com)`
+            : "Project enquiry from nova2labs.com",
         }),
       );
       setState("error");
@@ -101,13 +101,13 @@ function Contact() {
               Let's talk
             </div>
             <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-              Tell us what you're
+              Tell us what you are
               <br />
-              <span className="text-gradient">building next.</span>
+              <span className="text-gradient">building next</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              One short brief is all we need. Within 24 hours you'll get a clear plan, an honest
-              fixed-price estimate, and the engineer who would lead the work — free, no obligation.
+              One short brief is enough. Within 24 hours you get a written plan, a fixed-price
+              estimate and the name of the engineer who would lead the work.
             </p>
             {preselected !== NOT_SURE && (
               <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/8 px-4 py-2 text-sm text-primary">
@@ -183,7 +183,7 @@ function Contact() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Remote — {LOCATION.serves}</div>
+                  <div className="text-sm font-semibold">Remote · {LOCATION.serves}</div>
                   <div className="mt-0.5 font-mono text-xs text-muted-foreground">
                     Working across all time zones
                   </div>
@@ -198,15 +198,13 @@ function Contact() {
               />
 
               <div className="rounded-2xl border border-border bg-surface p-6">
-                <p className="mb-4 font-mono text-[11px] uppercase tracking-widest text-primary">
-                  What happens next
-                </p>
+                <p className="mb-4 text-xs font-medium text-primary">What happens next</p>
                 <ol className="space-y-4">
                   {[
                     "You submit this form",
                     "We review & reply within 24 hours",
                     "30-min discovery call",
-                    "Clear proposal — you decide",
+                    "Clear proposal, you decide",
                   ].map((step, i) => (
                     <li key={step} className="flex items-start gap-3 text-sm text-muted-foreground">
                       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 font-mono text-[11px] font-bold text-primary">
@@ -279,7 +277,7 @@ function Contact() {
                       placeholder="Your company (optional)"
                     />
                     <div>
-                      <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                      <label className="mb-2 block text-xs font-medium text-muted-foreground">
                         Service needed
                       </label>
                       <select
@@ -295,20 +293,20 @@ function Contact() {
                   </div>
 
                   <div className="mt-5">
-                    <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    <label className="mb-2 block text-xs font-medium text-muted-foreground">
                       Project brief <span className="text-primary">*</span>
                     </label>
                     <textarea
                       name="message"
                       required
                       rows={6}
-                      placeholder="Describe your project — what you're building, your timeline, and what you need from us."
+                      placeholder="What you are building, your timeline, and what you need from us."
                       className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
 
                   <div className="mt-5">
-                    <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    <label className="mb-2 block text-xs font-medium text-muted-foreground">
                       Budget guidance
                     </label>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -326,7 +324,7 @@ function Contact() {
                     </div>
                   </div>
 
-                  {/* Honeypot — bots fill hidden fields, humans never see it. */}
+                  {/* Honeypot: bots fill hidden fields, humans never see it. */}
                   <input
                     type="checkbox"
                     name="botcheck"
@@ -345,7 +343,7 @@ function Contact() {
                           className="mt-3 inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-xs font-semibold transition-colors hover:border-primary/50"
                         >
                           <Mail className="h-3.5 w-3.5 text-primary" />
-                          Send it by email instead — everything is prefilled
+                          Send it by email instead (everything is prefilled)
                         </a>
                       )}
                     </div>
@@ -412,7 +410,7 @@ function FormField({
 }) {
   return (
     <div>
-      <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+      <label className="mb-2 block text-xs font-medium text-muted-foreground">
         {label}
         {required && <span className="ml-1 text-primary">*</span>}
       </label>

@@ -92,7 +92,7 @@ function WorkDetail() {
         <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-24 md:pt-32">
           <Link
             to="/work"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3 w-3" /> All work
           </Link>
@@ -107,7 +107,7 @@ function WorkDetail() {
                   <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                   {w.category}
                 </span>
-                <span className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                <span className="rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
                   {w.context}
                 </span>
                 <span className="font-mono text-[11px] text-muted-foreground/70">{w.year}</span>
@@ -187,9 +187,7 @@ function WorkDetail() {
             )}
 
             <div className="rounded-2xl border border-border bg-surface p-6">
-              <h3 className="mb-4 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                Stack
-              </h3>
+              <h3 className="mb-4 text-xs font-medium text-muted-foreground">Stack</h3>
               <div className="flex flex-wrap gap-1.5">
                 {w.stack.map((t) => (
                   <span
@@ -204,9 +202,7 @@ function WorkDetail() {
 
             {service && (
               <div className="rounded-2xl border border-border bg-surface p-6">
-                <h3 className="mb-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                  Related service
-                </h3>
+                <h3 className="mb-3 text-xs font-medium text-muted-foreground">Related service</h3>
                 <Link
                   to="/services/$slug"
                   params={{ slug: service.slug }}
@@ -257,7 +253,7 @@ function WorkDetail() {
 
           {related.length > 0 && (
             <div className="mt-12">
-              <h3 className="mb-5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              <h3 className="mb-5 text-xs font-medium text-muted-foreground">
                 More in {w.category}
               </h3>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -293,7 +289,7 @@ function WorkDetail() {
           <div className="mt-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <Link
               to="/work"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3 w-3" /> All work
             </Link>
@@ -302,9 +298,7 @@ function WorkDetail() {
               params={{ slug: next.slug }}
               className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground"
             >
-              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                Next
-              </span>
+              <span className="text-xs font-medium text-muted-foreground">Next</span>
               <span className="max-w-[240px] truncate">{next.title}</span>
               <ArrowRight className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
             </Link>

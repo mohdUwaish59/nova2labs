@@ -68,25 +68,25 @@ const process = [
     icon: PhoneCall,
     title: "Free discovery call",
     time: "Day 1",
-    body: "30 minutes. We learn your goal, constraints and what success looks like — no sales pitch.",
+    body: "Thirty minutes to understand your goal, your constraints and how you will measure success.",
   },
   {
     icon: FileText,
     title: "Fixed-scope proposal",
     time: "Within 48h",
-    body: "A clear plan, timeline and fixed price. You know exactly what you get before you commit.",
+    body: "A written plan with deliverables, timeline and one fixed price for the work.",
   },
   {
     icon: Rocket,
     title: "Weekly shipping",
     time: "Week 1 onward",
-    body: "A working prototype in week one, then demos every week. You see progress, not status reports.",
+    body: "A working prototype in week one, then a live demo every week until launch.",
   },
   {
     icon: ShieldCheck,
     title: "Handover & support",
     time: "Launch",
-    body: "Full source code, docs and runbooks. 30 days of free support after go-live.",
+    body: "Source code, documentation and runbooks transfer to you, with 30 days of support included.",
   },
 ];
 
@@ -117,7 +117,7 @@ const comparison = [
 const faqs = [
   {
     q: "How much does a project cost?",
-    a: "It depends entirely on scope, so we quote per project rather than publishing a price list. After a free discovery call you receive one fixed price for the work — what we quote is what you pay, with no hourly surprises.",
+    a: "It depends entirely on scope, so we quote per project rather than publishing a price list. After a free discovery call you receive one fixed price for the work, what we quote is what you pay, with no hourly surprises.",
   },
   {
     q: "How fast can you start?",
@@ -125,7 +125,7 @@ const faqs = [
   },
   {
     q: "Do I own the code and IP?",
-    a: "Yes — 100%. Source code, infrastructure, documentation and credentials are fully transferred to you at handover.",
+    a: "Yes, 100%. Source code, infrastructure, documentation and credentials are fully transferred to you at handover.",
   },
   {
     q: "Will you sign an NDA?",
@@ -133,11 +133,11 @@ const faqs = [
   },
   {
     q: "What happens after launch?",
-    a: "Every project includes 30 days of free support. After that you can choose a flexible retainer for maintenance, monitoring and new features — or run it yourself with our runbooks.",
+    a: "Every project includes 30 days of free support. After that you can choose a flexible retainer for maintenance, monitoring and new features, or run it yourself with our runbooks.",
   },
   {
     q: "How do we communicate?",
-    a: "Directly with the engineers building your product via email, chat or calls — plus a live demo every week. No account managers in between.",
+    a: "Directly with the engineers building your product via email, chat or calls, plus a live demo every week. No account managers in between.",
   },
 ];
 
@@ -165,21 +165,21 @@ function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                 </span>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                <span className="text-xs font-medium text-muted-foreground">
                   Accepting new projects
                 </span>
               </div>
 
               <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-                AI and engineering
+                Engineering that moves
                 <br />
-                that turns into <span className="text-gradient">revenue.</span>
+                your <span className="text-gradient">business forward.</span>
               </h1>
 
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">nova2labs</strong> designs, builds and runs
-                production AI agents, software platforms and cloud infrastructure for businesses
-                that can't afford to get it wrong — fixed scope, senior engineers, shipped in weeks.
+                We build AI agents, software platforms and cloud infrastructure for companies that
+                need them to work in production. Every engagement has a fixed scope and a fixed
+                price, and senior engineers do the work.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
@@ -233,7 +233,7 @@ function Home() {
               {[...industries, ...industries].map((name, i) => (
                 <span
                   key={i}
-                  className="flex items-center gap-12 whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/70"
+                  className="flex items-center gap-12 whitespace-nowrap text-sm font-medium text-muted-foreground/70"
                 >
                   {name}
                   <span className="h-1 w-1 rounded-full bg-primary/50" />
@@ -259,15 +259,13 @@ function Home() {
               <span className="stat-number text-4xl font-bold text-foreground md:text-5xl">
                 {s.value}
               </span>
-              <span className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                {s.label}
-              </span>
+              <span className="mt-2 text-xs font-medium text-muted-foreground">{s.label}</span>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* SERVICES — the only place they appear on the home page */}
+      {/* SERVICES: the only place they appear on the home page */}
       <section id="services" className="scroll-mt-20 border-b border-border py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -277,11 +275,11 @@ function Home() {
                 What we do
               </div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                One partner for <span className="text-gradient">every layer of your stack.</span>
+                One partner for <span className="text-gradient">your whole stack</span>
               </h2>
               <p className="mt-4 text-muted-foreground">
-                From the AI agent your customers talk to, down to the network it runs on — so you
-                never coordinate five vendors again.
+                From the AI agent your customers talk to, down to the network it runs on. You brief
+                one team instead of coordinating five vendors.
               </p>
             </div>
             <Link
@@ -336,9 +334,7 @@ function Home() {
                     <span className="font-mono text-xs text-muted-foreground">
                       Fixed-scope engagement
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-wider text-primary">
-                      Explore →
-                    </span>
+                    <span className="text-xs font-medium text-primary">Explore →</span>
                   </div>
                 </Link>
               </motion.div>
@@ -356,10 +352,10 @@ function Home() {
               How it works
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              From first call to <span className="text-gradient">live in production.</span>
+              From first call to <span className="text-gradient">production</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              A simple, transparent process with zero guesswork at any stage.
+              Four stages. You know what happens at each one before you commit.
             </p>
           </div>
 
@@ -383,9 +379,7 @@ function Home() {
                   </div>
                   <span className="font-mono text-3xl font-bold text-foreground/10">0{i + 1}</span>
                 </div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-primary">
-                  {p.time}
-                </span>
+                <span className="text-xs font-medium text-primary">{p.time}</span>
                 <h3 className="mt-1.5 font-display text-lg font-bold">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
               </motion.div>
@@ -419,7 +413,7 @@ function Home() {
                 </h2>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
                   The people who write your application also run the identity, the network and the
-                  pipeline underneath it — so there is no gap for problems to hide in.
+                  pipeline underneath it. So there is no gap for problems to hide in.
                 </p>
               </motion.div>
             </div>
@@ -437,13 +431,13 @@ function Home() {
                 Selected work
               </div>
               <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                Real systems,
+                Systems we have built,
                 <br />
-                <span className="text-gradient">documented end to end.</span>
+                <span className="text-gradient">documented end to end</span>
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Every project below is one we designed, built and ran — with the problem, the
-                architecture and the outcome written out. No stock photos, no invented client logos.
+                Each one includes the problem it solved, how it was built and what changed as a
+                result.
               </p>
             </div>
             <Link
@@ -474,10 +468,10 @@ function Home() {
                   >
                     <div className="flex h-full flex-col justify-between p-6">
                       <div className="flex items-start justify-between gap-3">
-                        <span className="rounded-full bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-foreground backdrop-blur-sm">
+                        <span className="rounded-full bg-background/70 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm">
                           {w.category}
                         </span>
-                        <span className="rounded-full bg-background/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
+                        <span className="rounded-full bg-background/70 px-2.5 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur-sm">
                           {w.context}
                         </span>
                       </div>
@@ -531,13 +525,13 @@ function Home() {
               How we are organised
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Two practices.
+              Two practices, one
               <br />
-              <span className="text-gradient">One accountable team.</span>
+              <span className="text-gradient">accountable team</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              The AI and product layer, and the infrastructure it runs on — under one roof, so
-              nothing gets thrown over a wall mid-project.
+              The AI and product layer sits with the infrastructure it runs on, so nothing gets
+              handed between teams halfway through a project.
             </p>
           </div>
 
@@ -598,7 +592,7 @@ function Home() {
         </div>
       </section>
 
-      {/* WHY US — COMPARISON */}
+      {/* WHY US: COMPARISON */}
       <section className="border-b border-border py-24 md:py-32">
         <div className="mx-auto max-w-5xl px-6">
           <div className="mx-auto mb-14 max-w-2xl text-center">
@@ -607,7 +601,7 @@ function Home() {
               Why nova2labs
             </div>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Agency quality. <span className="text-gradient">Without the agency baggage.</span>
+              How we compare
             </h2>
           </div>
 
@@ -615,16 +609,14 @@ function Home() {
             <table className="w-full min-w-[560px] text-left text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="p-5 font-mono text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-                    What you get
-                  </th>
+                  <th className="p-5 text-xs font-medium text-muted-foreground">What you get</th>
                   <th className="bg-primary/8 p-5 text-center font-display text-base font-bold text-primary">
                     nova2labs
                   </th>
-                  <th className="p-5 text-center font-mono text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
+                  <th className="p-5 text-center text-xs font-medium text-muted-foreground">
                     Typical agency
                   </th>
-                  <th className="p-5 text-center font-mono text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
+                  <th className="p-5 text-center text-xs font-medium text-muted-foreground">
                     Freelancer
                   </th>
                 </tr>
@@ -658,9 +650,9 @@ function Home() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               FAQ
             </div>
-            <h2 className="font-display text-4xl font-bold tracking-tight">Questions, answered.</h2>
+            <h2 className="font-display text-4xl font-bold tracking-tight">Common questions</h2>
             <p className="mt-4 text-muted-foreground">
-              Still unsure? Ask us anything — a real engineer replies within 24 hours.
+              Anything not covered here, just ask. An engineer replies within 24 hours.
             </p>
             <Link
               to="/contact"
@@ -704,20 +696,20 @@ function Home() {
             transition={{ duration: 0.6, ease }}
           >
             <h2 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
-              Let's build
+              Tell us what you
               <br />
-              <span className="text-gradient">your unfair advantage.</span>
+              <span className="text-gradient">want built</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Tell us what you're building. Within 24 hours you'll get a clear plan, an honest
-              estimate and the engineer who'd lead it — free, with zero obligation.
+              Within 24 hours you get a written plan, an honest estimate and the name of the
+              engineer who would lead it. No cost, no obligation.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/contact"
                 className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.03]"
               >
-                Get my free project plan
+                Get a project plan
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <a
@@ -767,7 +759,7 @@ function HeroPanel() {
   ];
   const feed = [
     { t: "09:42", text: "Agent v2.3 deployed to production", ok: true },
-    { t: "09:15", text: "Eval suite passed — 312 / 312 checks", ok: true },
+    { t: "09:15", text: "Eval suite passed: 312 / 312 checks", ok: true },
     { t: "08:50", text: "Weekly demo scheduled with client", ok: false },
   ];
 
@@ -784,7 +776,7 @@ function HeroPanel() {
             <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
             <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
           </div>
-          <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          <span className="flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Delivery
             dashboard
           </span>
@@ -793,30 +785,26 @@ function HeroPanel() {
         <div className="p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <p className="text-[11px] font-medium text-muted-foreground">
                 Example view · every engagement gets one
               </p>
               <h3 className="mt-1 font-display text-lg font-bold">AI support agent</h3>
             </div>
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
               On track
             </span>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-2xl border border-border bg-background p-4">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                First response
-              </p>
+              <p className="text-[11px] font-medium text-muted-foreground">First response</p>
               <p className="stat-number mt-1.5 text-2xl font-bold">
                 4h <span className="text-muted-foreground/50">→</span>{" "}
                 <span className="text-gradient">9s</span>
               </p>
             </div>
             <div className="rounded-2xl border border-border bg-background p-4">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Time to launch
-              </p>
+              <p className="text-[11px] font-medium text-muted-foreground">Time to launch</p>
               <p className="stat-number mt-1.5 text-2xl font-bold">
                 <span className="text-gradient">5</span> weeks
               </p>
