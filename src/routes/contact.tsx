@@ -302,25 +302,27 @@ function Contact() {
                       name="message"
                       required
                       rows={6}
-                      placeholder="Describe your project — what you're building, your timeline, budget range, and what you need from us."
+                      placeholder="Describe your project — what you're building, your timeline, and what you need from us."
                       className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
 
                   <div className="mt-5">
                     <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                      Budget range
+                      Budget guidance
                     </label>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                      {["< $5k", "$5k – $15k", "$15k – $40k", "$40k+"].map((b) => (
-                        <label
-                          key={b}
-                          className="flex cursor-pointer items-center justify-center rounded-xl border border-border bg-background px-3 py-2.5 text-xs font-medium text-muted-foreground transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/8 has-[:checked]:text-primary"
-                        >
-                          <input type="radio" name="budget" value={b} className="sr-only" />
-                          {b}
-                        </label>
-                      ))}
+                      {["Not decided yet", "Focused scope", "Full product", "Enterprise"].map(
+                        (b) => (
+                          <label
+                            key={b}
+                            className="flex cursor-pointer items-center justify-center rounded-xl border border-border bg-background px-3 py-2.5 text-xs font-medium text-muted-foreground transition-all has-[:checked]:border-primary has-[:checked]:bg-primary/8 has-[:checked]:text-primary"
+                          >
+                            <input type="radio" name="budget" value={b} className="sr-only" />
+                            {b}
+                          </label>
+                        ),
+                      )}
                     </div>
                   </div>
 

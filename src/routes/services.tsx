@@ -22,7 +22,7 @@ export const Route = createFileRoute("/services")({
     seo({
       title: "Services — AI, Software, DevOps & Infrastructure | nova2labs",
       description:
-        "Seven engineering services delivered end-to-end: AI agents, LLM & NLP, full-stack engineering, DevOps & DevSecOps, networking, IT infrastructure and brand & product design. Fixed-scope pricing from $900.",
+        "Seven engineering services delivered end-to-end: AI agents, LLM & NLP, full-stack engineering, DevOps & DevSecOps, networking, IT infrastructure and brand & product design — every engagement fixed-scope and fixed-price.",
       path: "/services",
     }),
   component: Services,
@@ -65,18 +65,18 @@ const guarantees = [
 
 const tiers = [
   {
-    range: "$900 – $5,000",
-    label: "Scoped feature, design or integration",
+    range: "Focused scope",
+    label: "One feature, integration or brand system",
     detail:
-      "A single agent, pipeline, brand system, migration or integration with a clear boundary.",
+      "A single agent, pipeline, design system, migration or integration with a clear boundary.",
   },
   {
-    range: "$5,000 – $15,000",
+    range: "Product build",
     label: "Full product or MVP",
-    detail: "End-to-end product build: data model, API, UI, auth, CI and launch.",
+    detail: "End-to-end delivery: data model, API, UI, auth, CI and launch.",
   },
   {
-    range: "$15,000 – $40,000",
+    range: "Platform",
     label: "Enterprise platform or AI system",
     detail: "Multi-service platforms, agent fleets, Kubernetes and compliance work.",
   },
@@ -175,9 +175,6 @@ function Services() {
                           <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
                             {s.title}
                           </h2>
-                          {s.startingAt && (
-                            <span className="badge-primary">From {s.startingAt}</span>
-                          )}
                         </div>
                         <p className="mt-2.5 font-medium text-primary">{s.tagline}</p>
                         <p className="mt-3 leading-relaxed text-muted-foreground">{s.body}</p>

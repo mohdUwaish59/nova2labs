@@ -216,7 +216,7 @@ function WorkDetail() {
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold">{service.title}</span>
                     <span className="block truncate text-xs text-muted-foreground">
-                      From {service.startingAt}
+                      {service.tagline}
                     </span>
                   </span>
                   <ArrowRight className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-0.5" />

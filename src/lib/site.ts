@@ -127,7 +127,6 @@ export function serviceJsonLd(service: {
   title: string;
   tagline: string;
   body: string;
-  startingAt?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -140,22 +139,11 @@ export function serviceJsonLd(service: {
     url: absoluteUrl(`/services/${service.slug}`),
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: "Worldwide",
-    ...(service.startingAt
-      ? {
-          offers: {
-            "@type": "Offer",
-            priceCurrency: "USD",
-            price: service.startingAt.replace(/[^0-9.]/g, ""),
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: service.startingAt.replace(/[^0-9.]/g, ""),
-              priceCurrency: "USD",
-              valueAddedTaxIncluded: false,
-            },
-            url: absoluteUrl(`/contact?service=${service.slug}`),
-          },
-        }
-      : {}),
+    potentialAction: {
+      "@type": "ContactAction",
+      target: absoluteUrl(`/contact?service=${service.slug}`),
+      name: "Request a quote",
+    },
   };
 }
 

@@ -458,9 +458,7 @@ function ServiceLinks() {
           <ServiceIcon slug={s.slug} size={30} />
           <span className="min-w-0 flex-1">
             <span className="block truncate text-xs font-semibold text-foreground">{s.title}</span>
-            <span className="block truncate text-[11px] text-muted-foreground">
-              From {s.startingAt}
-            </span>
+            <span className="block truncate text-[11px] text-muted-foreground">{s.tagline}</span>
           </span>
           <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
         </Link>

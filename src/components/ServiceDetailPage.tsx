@@ -53,11 +53,6 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                 {p}
               </span>
             ))}
-            {service.startingAt && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/8 px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wider text-primary">
-                From {service.startingAt}
-              </span>
-            )}
           </div>
         </div>
       </section>
@@ -281,10 +276,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
                   <span className="text-gradient">{service.title.toLowerCase()}</span> project?
                 </h3>
                 <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-                  Send a two-line brief and you'll get a clear plan, a fixed price
-                  {service.startingAt
-                    ? ` (projects in this area start at ${service.startingAt})`
-                    : ""}{" "}
+                  Send a two-line brief and you'll get a clear plan, a fixed price for your scope,
                   and the engineer who would lead it — within 24 hours, free.
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">

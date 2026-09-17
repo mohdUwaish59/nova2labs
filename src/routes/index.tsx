@@ -117,7 +117,7 @@ const comparison = [
 const faqs = [
   {
     q: "How much does a project cost?",
-    a: "Most scoped projects fall between $900 and $40,000 depending on complexity. After a free discovery call you receive a fixed price — what we quote is what you pay, with no hourly surprises.",
+    a: "It depends entirely on scope, so we quote per project rather than publishing a price list. After a free discovery call you receive one fixed price for the work — what we quote is what you pay, with no hourly surprises.",
   },
   {
     q: "How fast can you start?",
@@ -334,7 +334,7 @@ function Home() {
 
                   <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
                     <span className="font-mono text-xs text-muted-foreground">
-                      From <span className="font-semibold text-foreground">{s.startingAt}</span>
+                      Fixed-scope engagement
                     </span>
                     <span className="font-mono text-xs uppercase tracking-wider text-primary">
                       Explore →

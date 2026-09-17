@@ -11,7 +11,6 @@ export type ServiceDetail = {
   stack: string[];
   outcomes: string[];
   lead: string;
-  startingAt?: string;
 };
 
 export const SERVICES: ServiceDetail[] = [
@@ -44,7 +43,6 @@ export const SERVICES: ServiceDetail[] = [
       "Predictable per-task cost and latency",
     ],
     lead: "nova2labs",
-    startingAt: "$3,500",
   },
   {
     slug: "llm-nlp",
@@ -78,7 +76,6 @@ export const SERVICES: ServiceDetail[] = [
       "Repeatable training and eval pipelines",
     ],
     lead: "nova2labs",
-    startingAt: "$2,500",
   },
   {
     slug: "full-stack",
@@ -109,7 +106,6 @@ export const SERVICES: ServiceDetail[] = [
       "Measurable performance and accessibility budgets",
     ],
     lead: "nova2labs",
-    startingAt: "$5,000",
   },
   {
     slug: "devops",
@@ -140,7 +136,6 @@ export const SERVICES: ServiceDetail[] = [
       "Lower cloud bill through right-sizing and policy",
     ],
     lead: "nova2labs",
-    startingAt: "$2,000",
   },
   {
     slug: "networking",
@@ -168,7 +163,6 @@ export const SERVICES: ServiceDetail[] = [
       "Secure remote access without VPN sprawl",
     ],
     lead: "nova2labs",
-    startingAt: "$1,500",
   },
   {
     slug: "it-infrastructure",
@@ -196,7 +190,6 @@ export const SERVICES: ServiceDetail[] = [
       "Clean joiner / mover / leaver workflows",
     ],
     lead: "nova2labs",
-    startingAt: "$1,500",
   },
   {
     slug: "graphic-design",
@@ -240,7 +233,6 @@ export const SERVICES: ServiceDetail[] = [
       "Assets in every size and format you'll be asked for",
     ],
     lead: "nova2labs",
-    startingAt: "$900",
   },
 ];
 
