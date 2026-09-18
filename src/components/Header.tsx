@@ -113,7 +113,7 @@ export function Header() {
             <ThemeToggle />
             <Link
               to="/contact"
-              className="hidden items-center gap-2 rounded-xl bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:scale-[1.03] md:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:scale-[1.03] md:inline-flex"
             >
               Start a project
             </Link>

@@ -191,7 +191,7 @@ function Home() {
             <h1 className="text-balance font-display text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
               We engineer the systems
               <br className="hidden sm:block" />{" "}
-              <span className="text-muted-foreground">your business runs on.</span>
+              <span className="text-primary">your business runs on.</span>
             </h1>
 
             <p className="mx-auto mt-8 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -202,14 +202,14 @@ function Home() {
             <div className="mt-11 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background transition-transform hover:scale-[1.02]"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
               >
                 Start a project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 to="/work"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-surface"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/60 hover:bg-primary/8"
               >
                 See our work
               </Link>
