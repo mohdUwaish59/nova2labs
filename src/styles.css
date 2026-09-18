@@ -527,3 +527,9 @@
   .marquee-track, .hero-blob-1, .hero-blob-2, .hero-blob-3, .bar-grow { animation: none; }
   .group:hover .icon-float { transform: none; }
 }
+
+/* Hero architecture: keep the diagram still for visitors who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .stack-packets { display: none; }
+  .stack-status animate { display: none; }
+}

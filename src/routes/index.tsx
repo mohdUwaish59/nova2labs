@@ -17,6 +17,7 @@ import {
 import { PageShell } from "@/components/PageShell";
 import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
+import { StackVisual } from "@/components/StackVisual";
 import { SERVICES } from "@/lib/services-data";
 import { featuredWork, WORK } from "@/lib/work-data";
 import { PRACTICES } from "@/lib/practices";
@@ -147,83 +148,103 @@ function Home() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-hero">
-        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
-        <div className="hero-blob-1 left-[5%] top-[-150px]" aria-hidden />
-        <div className="hero-blob-3 bottom-[-120px] right-[10%]" aria-hidden />
+      <section className="relative overflow-hidden">
+        {/* A single, quiet light source from above. No blobs, no haze. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-[720px]"
+          style={{
+            background:
+              "radial-gradient(60% 55% at 50% 0%, oklch(from var(--primary) l c h / 0.14), transparent 70%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(70%_60%_at_50%_30%,black,transparent)]"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+          }}
+        />
 
-        <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-20 md:pb-28 md:pt-28">
-          <div className="grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-            {/* Copy */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease }}
+        <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-20 md:pt-28">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease }}
+            className="mx-auto max-w-5xl text-center"
+          >
+            <Link
+              to="/work"
+              className="group mx-auto mb-10 inline-flex items-center gap-3 rounded-full border border-border bg-surface/70 py-1.5 pl-1.5 pr-4 text-sm backdrop-blur-sm transition-colors hover:border-primary/40"
             >
-              <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/80 px-4 py-1.5 backdrop-blur-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                </span>
-                <span className="text-xs font-medium text-muted-foreground">
-                  Accepting new projects
+              <span className="rounded-full bg-primary/12 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                New
+              </span>
+              <span className="text-muted-foreground transition-colors group-hover:text-foreground">
+                15 production systems, documented end to end
+              </span>
+              <ArrowRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+            </Link>
+
+            <h1 className="text-balance font-display text-[clamp(2.6rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+              We engineer the systems
+              <br className="hidden sm:block" />{" "}
+              <span className="text-muted-foreground">your business runs on.</span>
+            </h1>
+
+            <p className="mx-auto mt-8 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl">
+              AI agents, software platforms and the cloud infrastructure beneath them. Designed,
+              built and operated by one senior team.
+            </p>
+
+            <div className="mt-11 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background transition-transform hover:scale-[1.02]"
+              >
+                Start a project
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-surface"
+              >
+                See our work
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Signature visual: the whole stack, live */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.25, ease }}
+            className="relative mx-auto mt-20 max-w-6xl"
+          >
+            <div className="relative overflow-hidden rounded-[28px] border border-border bg-surface/40 p-5 backdrop-blur-sm md:p-10">
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-3 md:mb-8">
+                <div className="flex items-center gap-2.5 text-sm font-medium text-foreground">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                  </span>
+                  One team, every layer
+                </div>
+                <span className="text-sm text-muted-foreground">
+                  From the interface your customers use to the network it runs on
                 </span>
               </div>
-
-              <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-                Engineering that moves
-                <br />
-                your <span className="text-gradient">business forward.</span>
-              </h1>
-
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                We build AI agents, software platforms and cloud infrastructure for companies that
-                need them to work in production. Every engagement has a fixed scope and a fixed
-                price, and senior engineers do the work.
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-glow transition-all hover:scale-[1.03]"
-                >
-                  Book a free strategy call
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  to="/work"
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface/80 px-7 py-4 text-sm font-semibold text-foreground backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-surface"
-                >
-                  See our work
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-
-              <ul className="mt-9 grid max-w-lg grid-cols-2 gap-x-6 gap-y-2.5">
-                {[
-                  "Fixed-price scopes",
-                  "Full IP ownership",
-                  "Reply within 24 hours",
-                  "NDA on request",
-                ].map((t) => (
-                  <li key={t} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Delivery dashboard */}
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.25, duration: 0.8, ease }}
-              className="relative"
-            >
-              <HeroPanel />
-            </motion.div>
-          </div>
+              <StackVisual />
+            </div>
+            {/* soft floor reflection */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-10 -bottom-8 h-16 rounded-full blur-3xl"
+              style={{ background: "oklch(from var(--primary) l c h / 0.12)" }}
+            />
+          </motion.div>
         </div>
 
         {/* Industries marquee */}
@@ -748,99 +769,5 @@ function Mark({ v }: { v: boolean | "partial" }) {
     <span className="mx-auto flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground/50">
       <X className="h-4 w-4" aria-label="No" />
     </span>
-  );
-}
-
-function HeroPanel() {
-  const bars = [
-    { label: "Tickets auto-resolved", value: 78, display: "78%" },
-    { label: "Cost per ticket reduced", value: 64, display: "−64%" },
-    { label: "CSAT score", value: 94, display: "4.7 / 5" },
-  ];
-  const feed = [
-    { t: "09:42", text: "Agent v2.3 deployed to production", ok: true },
-    { t: "09:15", text: "Eval suite passed: 312 / 312 checks", ok: true },
-    { t: "08:50", text: "Weekly demo scheduled with client", ok: false },
-  ];
-
-  return (
-    <div className="relative">
-      <div
-        className="absolute -inset-6 rounded-[2rem] bg-gradient-primary opacity-20 blur-3xl"
-        aria-hidden
-      />
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-surface/90 shadow-elegant backdrop-blur-xl">
-        <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
-          <div className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
-          </div>
-          <span className="flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Delivery
-            dashboard
-          </span>
-        </div>
-
-        <div className="p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-[11px] font-medium text-muted-foreground">
-                Example view · every engagement gets one
-              </p>
-              <h3 className="mt-1 font-display text-lg font-bold">AI support agent</h3>
-            </div>
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-              On track
-            </span>
-          </div>
-
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-border bg-background p-4">
-              <p className="text-[11px] font-medium text-muted-foreground">First response</p>
-              <p className="stat-number mt-1.5 text-2xl font-bold">
-                4h <span className="text-muted-foreground/50">→</span>{" "}
-                <span className="text-gradient">9s</span>
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-background p-4">
-              <p className="text-[11px] font-medium text-muted-foreground">Time to launch</p>
-              <p className="stat-number mt-1.5 text-2xl font-bold">
-                <span className="text-gradient">5</span> weeks
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 space-y-4">
-            {bars.map((b, i) => (
-              <div key={b.label}>
-                <div className="mb-1.5 flex justify-between text-xs">
-                  <span className="text-muted-foreground">{b.label}</span>
-                  <span className="font-mono font-semibold text-foreground">{b.display}</span>
-                </div>
-                <div className="h-2 overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="bar-grow h-full rounded-full bg-gradient-primary"
-                    style={{ width: `${b.value}%`, animationDelay: `${0.5 + i * 0.15}s` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 space-y-2.5 border-t border-border pt-5">
-            {feed.map((f) => (
-              <div key={f.text} className="flex items-center gap-3 text-xs">
-                <span className="font-mono text-muted-foreground/70">{f.t}</span>
-                <span
-                  className={`h-1.5 w-1.5 shrink-0 rounded-full ${f.ok ? "bg-emerald-500" : "bg-primary"}`}
-                />
-                <span className="truncate text-muted-foreground">{f.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
