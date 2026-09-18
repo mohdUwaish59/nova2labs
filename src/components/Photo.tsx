@@ -52,7 +52,12 @@ export function Photo({
   return (
     <figure
       className={`relative overflow-hidden bg-secondary ${className}`}
-      style={{ aspectRatio: `${rw} / ${rh}` }}
+      // A definite width stops a max-height cap from shrinking the box sideways
+      // (aspect-ratio would otherwise derive width from the clamped height).
+      style={{
+        aspectRatio: `${rw} / ${rh}`,
+        width: /(^|\s)w-/.test(className) ? undefined : "100%",
+      }}
     >
       <img
         src={photoUrl(photo.id, 1080, height(1080))}
