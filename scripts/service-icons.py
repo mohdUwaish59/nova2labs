@@ -15,15 +15,18 @@ S = 49            # iso unit in px
 CX, CY = 128, 146  # platform centre on the 256 canvas
 C30, S30 = math.cos(math.pi / 6), 0.5
 
+# Analogous cool range around the brand cyan, so the family sits inside the
+# site's palette. Each object is paired with a complementary brand accent
+# (cyan <-> violet) for its orbs, giving every icon the brand duotone.
 PALETTES = {
-    #            top        mid        dark       deep       glow
-    "cyan":    ("#b6f6ff", "#22d3ee", "#0e7490", "#0b3a4a", "#22d3ee"),
-    "violet":  ("#e4dcff", "#a78bfa", "#6d28d9", "#3b1a78", "#8b5cf6"),
-    "blue":    ("#cfe2ff", "#60a5fa", "#1d4ed8", "#172a6b", "#3b82f6"),
-    "emerald": ("#b8f5da", "#34d399", "#047857", "#063d2f", "#10b981"),
-    "teal":    ("#aef7ea", "#2dd4bf", "#0f766e", "#0c3b38", "#14b8a6"),
-    "amber":   ("#ffe9a6", "#fbbf24", "#b45309", "#5c2c07", "#f59e0b"),
-    "pink":    ("#ffd6ec", "#f472b6", "#be185d", "#5e1034", "#ec4899"),
+    #            top        mid        dark       deep       glow       accent
+    "cyan":    ("#c4f6ff", "#22d3ee", "#0e7490", "#0b3a4a", "#22d3ee", "violet"),
+    "violet":  ("#e7e0ff", "#a78bfa", "#6d28d9", "#3b1a78", "#8b5cf6", "cyan"),
+    "blue":    ("#d6e6ff", "#60a5fa", "#1d4ed8", "#172a6b", "#3b82f6", "cyan"),
+    "teal":    ("#bdf8ef", "#2dd4bf", "#0f766e", "#0c3b38", "#14b8a6", "violet"),
+    "sky":     ("#d3f1ff", "#38bdf8", "#0369a1", "#0c3552", "#0ea5e9", "violet"),
+    "indigo":  ("#e2e5ff", "#818cf8", "#4338ca", "#232065", "#6366f1", "cyan"),
+    "iris":    ("#f1e1ff", "#c084fc", "#7e22ce", "#3e1466", "#a855f7", "cyan"),
 }
 
 
@@ -39,7 +42,9 @@ class Scene:
     def __init__(self, uid, hue, mode):
         self.uid, self.hue, self.mode = uid, hue, mode
         self.defs, self.body, self.n = [], [], 0
-        top, mid, dark, deep, glow = PALETTES[hue]
+        top, mid, dark, deep, glow, accent = PALETTES[hue]
+        atop, amid, adark, _, aglow, _ = PALETTES[accent]
+        self.aglow = aglow
         self.top, self.mid, self.dark, self.deep, self.glow = top, mid, dark, deep, glow
         self.grad("top", top, mid, "0", "0", "1", "1")
         self.grad("left", mid, dark, "0", "0", "0", "1")
@@ -60,8 +65,8 @@ class Scene:
         )
         self.defs.append(
             f'<radialGradient id="{uid}-orb" cx=".35" cy=".3" r=".75">'
-            f'<stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="{top}"/>'
-            f'<stop offset=".75" stop-color="{mid}"/><stop offset="1" stop-color="{dark}"/></radialGradient>'
+            f'<stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="{atop}"/>'
+            f'<stop offset=".75" stop-color="{amid}"/><stop offset="1" stop-color="{adark}"/></radialGradient>'
         )
         self.defs.append(
             f'<filter id="{uid}-blur" x="-50%" y="-50%" width="200%" height="200%">'
@@ -113,7 +118,7 @@ class Scene:
     def orb(self, x, y, z, r, glow=True):
         cx, cy = P(x, y, z)
         if glow:
-            self.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r * 1.9:.1f}" fill="{self.glow}" '
+            self.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r * 1.9:.1f}" fill="{self.aglow}" '
                      f'opacity=".35" filter="url(#{self.uid}-blur)"/>')
         self.add(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="url(#{self.uid}-orb)"/>')
         self.add(f'<ellipse cx="{cx - r * .32:.1f}" cy="{cy - r * .38:.1f}" rx="{r * .32:.1f}" '
@@ -270,10 +275,10 @@ ICONS = {
     "ai-agents": ("cyan", ai_agents),
     "llm-nlp": ("violet", llm_nlp),
     "full-stack": ("blue", full_stack),
-    "devops": ("emerald", devops),
-    "networking": ("teal", networking),
-    "it-infrastructure": ("amber", it_infrastructure),
-    "graphic-design": ("pink", graphic_design),
+    "devops": ("teal", devops),
+    "networking": ("sky", networking),
+    "it-infrastructure": ("indigo", it_infrastructure),
+    "graphic-design": ("iris", graphic_design),
 }
 
 if __name__ == "__main__":
