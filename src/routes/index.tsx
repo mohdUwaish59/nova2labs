@@ -18,6 +18,7 @@ import { PageShell } from "@/components/PageShell";
 import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { StackVisual } from "@/components/StackVisual";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { SERVICES } from "@/lib/services-data";
 import { featuredWork, WORK } from "@/lib/work-data";
 import { PRACTICES } from "@/lib/practices";
@@ -149,24 +150,7 @@ function Home() {
     <PageShell>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        {/* A single, quiet light source from above. No blobs, no haze. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-[720px]"
-          style={{
-            background:
-              "radial-gradient(60% 55% at 50% 0%, oklch(from var(--primary) l c h / 0.14), transparent 70%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(70%_60%_at_50%_30%,black,transparent)]"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
-          }}
-        />
+        <HeroBackdrop />
 
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-20 md:pt-28">
           <motion.div

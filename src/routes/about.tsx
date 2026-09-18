@@ -13,6 +13,7 @@ import {
   Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { Photo } from "@/components/Photo";
 import { SERVICES } from "@/lib/services-data";
 import { WORK } from "@/lib/work-data";
@@ -112,10 +113,8 @@ function About() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-hero">
-        <div className="absolute inset-0 grid-bg opacity-30" aria-hidden />
-        <div className="hero-blob-1 right-[5%] top-[-200px]" aria-hidden />
-        <div className="hero-blob-2 bottom-[-150px] left-[-100px]" aria-hidden />
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
 
         <div className="relative mx-auto w-full max-w-7xl px-6 py-28 md:py-36">
           <motion.div
@@ -128,7 +127,7 @@ function About() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               About nova2labs
             </div>
-            <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
+            <h1 className="text-balance font-display text-[clamp(2.5rem,5.6vw,4.9rem)] font-semibold leading-[1] tracking-[-0.045em]">
               Engineering you can
               <br />
               <span className="text-gradient">rely on</span>
@@ -141,14 +140,14 @@ function About() {
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:scale-[1.02]"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
               >
                 Work with us{" "}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/work"
-                className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface/80 px-6 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-surface"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/60 hover:bg-primary/8"
               >
                 See our work
               </Link>

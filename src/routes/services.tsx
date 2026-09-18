@@ -16,6 +16,8 @@ import { seo } from "@/lib/site";
 import { ServicesNavCard } from "@/components/ServicesNavCard";
 import { Photo } from "@/components/Photo";
 import { servicePhoto } from "@/lib/images";
+import { ServiceOrbit } from "@/components/ServiceOrbit";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 
 export const Route = createFileRoute("/services")({
   head: () =>
@@ -91,43 +93,67 @@ function Services() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-hero">
-        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
-        <div className="hero-blob-1 right-0 top-[-200px]" aria-hidden />
-        <div className="hero-blob-3 bottom-[-100px] left-[20%]" aria-hidden />
-
-        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-24 md:pb-20 md:pt-32">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
-          >
-            <div className="badge-primary mb-8">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Services
-            </div>
-            <h1 className="max-w-4xl font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
-              Seven services,
-              <br />
-              <span className="text-gradient">one senior team</span>
-            </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Take one service or hand over the whole stack. Every engagement is scoped and priced
-              up front, and the engineers who scope it are the ones who build it.
-            </p>
-
-            <nav className="mt-10 flex flex-wrap gap-2" aria-label="Jump to a service">
-              {SERVICES.map((s) => (
-                <a
-                  key={s.slug}
-                  href={`#${s.slug}`}
-                  className="rounded-full border border-border bg-surface/80 px-4 py-2 text-xs font-medium text-muted-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:text-foreground"
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20 md:pb-24 md:pt-24">
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease }}
+            >
+              <div className="badge-primary mb-8">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                Services
+              </div>
+              <h1 className="text-balance font-display text-[clamp(2.4rem,4.4vw,4.1rem)] font-semibold leading-[1.02] tracking-[-0.045em]">
+                Seven disciplines.
+                <br />
+                <span className="text-primary">One senior team.</span>
+              </h1>
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                Take one service or hand over the whole stack. Every engagement is scoped and priced
+                up front, and the engineers who scope it are the ones who build it.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
                 >
-                  {s.title}
+                  Start a project
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <a
+                  href="#ai-agents"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/60 hover:bg-primary/8"
+                >
+                  Explore services
                 </a>
-              ))}
-            </nav>
-          </motion.div>
+              </div>
+
+              {/* Phones get the plain jump list; the orbit is the index on larger screens */}
+              <nav className="mt-10 flex flex-wrap gap-2 lg:hidden" aria-label="Jump to a service">
+                {SERVICES.map((s) => (
+                  <a
+                    key={s.slug}
+                    href={`#${s.slug}`}
+                    className="rounded-full border border-border bg-surface/80 px-4 py-2 text-xs font-medium text-muted-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:text-foreground"
+                  >
+                    {s.title}
+                  </a>
+                ))}
+              </nav>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.2, ease }}
+              className="hidden sm:block"
+            >
+              <ServiceOrbit />
+            </motion.div>
+          </div>
         </div>
       </section>
 

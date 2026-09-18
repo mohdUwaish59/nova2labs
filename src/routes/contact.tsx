@@ -12,6 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { Photo } from "@/components/Photo";
 import { SERVICES } from "@/lib/services-data";
 import { buildMailto, submitLead } from "@/lib/lead";
@@ -84,10 +85,8 @@ function Contact() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-hero">
-        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
-        <div className="hero-blob-1 right-[5%] top-[-200px]" aria-hidden />
-        <div className="hero-blob-3 bottom-[-100px] left-[20%]" aria-hidden />
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
 
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-36">
           <motion.div
@@ -100,7 +99,7 @@ function Contact() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Let's talk
             </div>
-            <h1 className="font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="text-balance font-display text-[clamp(2.5rem,5.6vw,4.9rem)] font-semibold leading-[1] tracking-[-0.045em]">
               Tell us what you are
               <br />
               <span className="text-gradient">building next</span>

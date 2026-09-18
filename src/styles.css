@@ -533,3 +533,11 @@
   .stack-packets { display: none; }
   .stack-status animate { display: none; }
 }
+
+/* Services orbit */
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+.orbit-spin { animation: orbit-spin 80s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin { animation: none; }
+  .orbit-signal { display: none; }
+}

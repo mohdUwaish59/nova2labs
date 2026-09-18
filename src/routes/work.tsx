@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 import { Photo } from "@/components/Photo";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { WORK, WORK_CATEGORIES, type WorkCategory } from "@/lib/work-data";
@@ -39,10 +40,8 @@ function Work() {
   return (
     <PageShell>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-hero">
-        <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
-        <div className="hero-blob-1 right-0 top-[-200px]" aria-hidden />
-        <div className="hero-blob-3 bottom-[-120px] left-[15%]" aria-hidden />
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
 
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-24 md:pt-32">
           <motion.div
@@ -54,7 +53,7 @@ function Work() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Selected work
             </div>
-            <h1 className="max-w-4xl font-display text-[2.15rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
+            <h1 className="text-balance font-display text-[clamp(2.5rem,5.6vw,4.9rem)] font-semibold leading-[1] tracking-[-0.045em]">
               Systems we have
               <br />
               <span className="text-gradient">shipped and run</span>
