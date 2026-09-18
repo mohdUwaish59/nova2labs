@@ -1,153 +1,62 @@
 /**
- * Photography used across the site.
+ * Visuals used across the site.
  *
- * Real photographs served from the Unsplash CDN (Unsplash License: free for
- * commercial use, no attribution required). Every id below was verified live.
- * Images are requested through the CDN's transform params, so each placement
- * gets exactly the crop and size it needs — nothing oversized ships to a phone.
+ * Every "photo" slot renders generated, on-brand artwork (see Artwork.tsx):
+ * a living diagram of the discipline itself, drawn in the site's colours.
+ * `seed` makes each placement a different drawing of the same motif.
  */
+import type { Motif } from "@/components/Artwork";
 
-export type Photo = { id: string; alt: string };
+export type Photo = { motif: Motif; alt: string; seed: string };
 
-const CDN = "https://images.unsplash.com/photo-";
+const art = (motif: Motif, alt: string, seed: string): Photo => ({ motif, alt, seed });
 
-/** Builds a cropped, auto-formatted CDN url for one placement. */
-export function photoUrl(id: string, w: number, h: number, q = 74) {
-  return `${CDN}${id}?auto=format&fit=crop&crop=entropy&w=${w}&h=${h}&q=${q}`;
-}
-
-/** Widths offered to the browser; it picks what the layout actually needs. */
-export const PHOTO_WIDTHS = [480, 768, 1080, 1600, 2000];
-
-/* ── Service photography ──────────────────────────────────────────────────── */
+/* ── Services ─────────────────────────────────────────────────────────────── */
 export const SERVICE_PHOTOS: Record<string, Photo> = {
-  "ai-agents": {
-    id: "1550751827-4bd374c3f58b",
-    alt: "Close-up of an illuminated circuit board carrying signal traces",
-  },
-  "llm-nlp": {
-    id: "1487058792275-0ad4aaf24ca7",
-    alt: "Streams of syntax-highlighted source code on a dark display",
-  },
-  "full-stack": {
-    id: "1498050108023-c5249f4df085",
-    alt: "A laptop on a clean desk showing an editor mid-build",
-  },
-  devops: {
-    id: "1517180102446-f3ece451e9d8",
-    alt: "A terminal and editor open on a dark screen during a deployment",
-  },
-  networking: {
-    id: "1544197150-b99a580bb7a8",
-    alt: "Patch panel with numbered ports and network cables connected",
-  },
-  "it-infrastructure": {
-    id: "1573164713988-8665fc963095",
-    alt: "Engineers working with a laptop in a lit data-centre aisle",
-  },
-  "graphic-design": {
-    id: "1581092160562-40aa08e78837",
-    alt: "A designer sketching interface wireframes at a desk",
-  },
+  "ai-agents": art("agents", "An agent calling tools in a plan, act, observe loop", "svc-ai"),
+  "llm-nlp": art("llm", "A document being turned into validated, structured fields", "svc-llm"),
+  "full-stack": art("stack", "A product dashboard with live metrics and a trend chart", "svc-fs"),
+  devops: art(
+    "pipeline",
+    "A delivery pipeline running build, test, scan, sign and deploy",
+    "svc-devops",
+  ),
+  networking: art("mesh", "A segmented network mesh behind a zero-trust gateway", "svc-net"),
+  "it-infrastructure": art(
+    "rack",
+    "Compute, storage and network racks with live status lights",
+    "svc-it",
+  ),
+  "graphic-design": art(
+    "design",
+    "A logo construction grid with a bezier curve and colour swatches",
+    "svc-design",
+  ),
 };
 
-/* ── Work photography, by discipline ─────────────────────────────────────── */
-export const WORK_CATEGORY_PHOTOS: Record<string, Photo> = {
-  "AI Agents": {
-    id: "1531297484001-80022131f5a1",
-    alt: "A laptop glowing in a darkened room",
-  },
-  "LLM & NLP": {
-    id: "1526628953301-3e589a6a8b74",
-    alt: "A dashboard of charts and metrics on a widescreen monitor",
-  },
-  "Full-Stack": {
-    id: "1504639725590-34d0984388bd",
-    alt: "A developer workstation with code across two monitors",
-  },
-  "DevOps & Cloud": {
-    id: "1555949963-aa79dcee981c",
-    alt: "Colour-highlighted code on screen during a review",
-  },
-  "IT Infrastructure": {
-    id: "1558494949-ef010cbdcc31",
-    alt: "Server racks with structured fibre cabling",
-  },
-  "Networking & Security": {
-    id: "1591808216268-ce0b82787efe",
-    alt: "Network cables patched into a rack-mounted switch",
-  },
-  "Brand & Design": {
-    id: "1581092160562-40aa08e78837",
-    alt: "A designer sketching interface wireframes at a desk",
-  },
+/* ── Work, by discipline ──────────────────────────────────────────────────── */
+const CATEGORY_MOTIF: Record<string, Motif> = {
+  "AI Agents": "agents",
+  "LLM & NLP": "llm",
+  "Full-Stack": "stack",
+  "DevOps & Cloud": "pipeline",
+  "IT Infrastructure": "rack",
+  "Networking & Security": "mesh",
+  "Brand & Design": "design",
 };
 
-/** Per-project overrides where a specific photo fits better than the discipline default. */
-export const WORK_PHOTOS: Record<string, Photo> = {
-  "infotech-wizard": {
-    id: "1531482615713-2afd69097998",
-    alt: "Two colleagues troubleshooting together at a support desk",
-  },
-  "n8n-agent-workflows": {
-    id: "1551288049-bebda4e38f71",
-    alt: "Analytics charts on a laptop screen",
-  },
-  "enterprise-endpoint-automation": {
-    id: "1573164713988-8665fc963095",
-    alt: "Engineers working with a laptop in a lit data-centre aisle",
-  },
-  "itsm-automation": {
-    id: "1522071820081-009f0129c71c",
-    alt: "A team working across laptops around a shared table",
-  },
-  "otree-proxy-server": {
-    id: "1519389950473-47ba0277781c",
-    alt: "Overhead view of laptops and notebooks on a desk during a session",
-  },
-  "universitaet-kompass": {
-    id: "1552664730-d307ca884978",
-    alt: "A planning session with notes on a wall and open laptops",
-  },
-  "pfsense-security-lab": {
-    id: "1544197150-b99a580bb7a8",
-    alt: "Patch panel with numbered ports and network cables connected",
-  },
-};
-
-/* ── Page photography ─────────────────────────────────────────────────────── */
+/* ── Pages ────────────────────────────────────────────────────────────────── */
 export const PAGE_PHOTOS = {
-  homeBand: {
-    id: "1558494949-ef010cbdcc31",
-    alt: "Server racks with structured fibre cabling",
-  },
-  aboutMission: {
-    id: "1556761175-b413da4baf72",
-    alt: "An open-plan studio with a team at work",
-  },
-  aboutEngagement: {
-    id: "1552664730-d307ca884978",
-    alt: "A planning session with notes on a wall and open laptops",
-  },
-  contact: {
-    id: "1521791136064-7986c2920216",
-    alt: "Two people shaking hands at the start of a project",
-  },
-  workHero: {
-    id: "1451187580459-43490279c0fa",
-    alt: "Earth at night from orbit, city lights visible",
-  },
-  practiceAi: {
-    id: "1550751827-4bd374c3f58b",
-    alt: "Close-up of an illuminated circuit board carrying signal traces",
-  },
-  practiceInfra: {
-    id: "1581092918056-0c4c3acd3789",
-    alt: "Hands working on hardware components at a bench",
-  },
+  homeBand: art("rack", "Racks of infrastructure running with live status lights", "home-band"),
+  aboutMission: art("mesh", "A network of connected systems run by one team", "about-mission"),
+  aboutEngagement: art("pipeline", "Work moving from build to production", "about-engagement"),
+  contact: art("connect", "A brief travelling to nova2labs and a plan coming back", "contact"),
+  workHero: art("mesh", "A network of shipped systems", "work-hero"),
+  practiceAi: art("agents", "An AI agent orchestrating tools", "practice-ai"),
+  practiceInfra: art("rack", "Infrastructure racks with live status lights", "practice-infra"),
 } satisfies Record<string, Photo>;
 
 export const workPhoto = (slug: string, category: string): Photo =>
-  WORK_PHOTOS[slug] ?? WORK_CATEGORY_PHOTOS[category] ?? PAGE_PHOTOS.homeBand;
+  art(CATEGORY_MOTIF[category] ?? "mesh", `Illustration for ${slug.replace(/-/g, " ")}`, slug);
 
 export const servicePhoto = (slug: string): Photo => SERVICE_PHOTOS[slug] ?? PAGE_PHOTOS.homeBand;

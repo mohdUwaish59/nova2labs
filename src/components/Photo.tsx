@@ -1,4 +1,5 @@
-import { PHOTO_WIDTHS, photoUrl, type Photo as PhotoData } from "@/lib/images";
+import type { Photo as PhotoData } from "@/lib/images";
+import { Artwork } from "@/components/Artwork";
 
 type Props = {
   photo: PhotoData;
@@ -30,12 +31,10 @@ const RATIOS: Record<NonNullable<Props["ratio"]>, [number, number]> = {
 };
 
 /**
- * A photograph inside a framed container.
+ * A framed visual slot.
  *
- * Renders a real responsive image: one crop per breakpoint from the CDN, a
- * reserved aspect-ratio box so nothing shifts while it loads, and a light
- * brand wash that ties warm stock photography to the cyan/violet UI without
- * burying the picture itself.
+ * Renders generated on-brand artwork inside a reserved aspect-ratio box, with
+ * optional legibility ramps when copy sits on top of it.
  */
 export function Photo({
   photo,
@@ -47,7 +46,6 @@ export function Photo({
   children,
 }: Props) {
   const [rw, rh] = RATIOS[ratio];
-  const height = (w: number) => Math.round((w * rh) / rw);
 
   return (
     <figure
@@ -59,27 +57,10 @@ export function Photo({
         width: /(^|\s)w-/.test(className) ? undefined : "100%",
       }}
     >
-      <img
-        src={photoUrl(photo.id, 1080, height(1080))}
-        srcSet={PHOTO_WIDTHS.map((w) => `${photoUrl(photo.id, w, height(w))} ${w}w`).join(", ")}
-        sizes={sizes}
-        alt={photo.alt}
-        width={1080}
-        height={height(1080)}
-        loading={eager ? "eager" : "lazy"}
-        decoding="async"
-        draggable={false}
-        // Lifted slightly so dark photography still reads against the dark UI.
-        className="absolute inset-0 h-full w-full select-none object-cover brightness-[1.08] contrast-[1.04] saturate-[1.05]"
-      />
+      <Artwork motif={photo.motif} seed={photo.seed} label={photo.alt} />
 
       {tint !== "none" && (
         <>
-          {/* Cool brand wash — kept light so the photo stays the subject. */}
-          <span
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-[oklch(0.55_0.18_275)]/15"
-          />
           {/* Legibility ramp, bottom only. */}
           <span
             aria-hidden

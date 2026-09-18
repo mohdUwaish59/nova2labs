@@ -541,3 +541,8 @@
   .orbit-spin { animation: none; }
   .orbit-signal { display: none; }
 }
+
+/* Generated artwork: hold still for reduced-motion visitors. */
+@media (prefers-reduced-motion: reduce) {
+  .art-motion animate, .art-motion animateMotion, .art-motion animateTransform { display: none; }
+}
